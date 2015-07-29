@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.iglu.security.PassEncode;
 import com.iglu.spring.dao.AuthorityDAO;
 import com.iglu.spring.dao.ClienteDAO;
 import com.iglu.spring.dao.UserDAO;
@@ -32,7 +33,10 @@ public class ClienteService {
 	@Transactional(readOnly = false)
 	public String suscribir(Cliente cliente) {		
 		User u = new User();
-		u.setPassword(Password.genPass());
+		PassEncode xx=new PassEncode();
+		String yy=Password.genPass();
+		u.setPassword(xx.codificar(yy));
+		System.out.println(yy+"\n"+u.getPassword());
 		u.setUsername(cliente.getEmail());
 		u.setEnabled(true);
 		u.setCliente(cliente);	
@@ -43,13 +47,14 @@ public class ClienteService {
 		getClienteDAO().insertCliente(cliente);
 		getUserDAO().insertUser(u) ;
 		getAuthorityDAO().insertAuthority(au);
-		return u.getPassword();
+		return yy;
 	}
 	
 	@Transactional(readOnly = false)
 	public void modificarPass(String username, String pass) {		
 		User u=getUserDAO().getUser(username);
-		u.setPassword(pass);
+		PassEncode xx=new PassEncode();		
+		u.setPassword(xx.codificar(pass));
 		getUserDAO().updateUser(u);
 		
 	}

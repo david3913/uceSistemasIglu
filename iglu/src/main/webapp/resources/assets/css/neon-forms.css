@@ -6348,12 +6348,13 @@ hr + .mail-env {
   transition: all 550ms ease-in-out;
 }
 .login-page .login-content a {
+	margin-top:-50px;
   color: #949494;
 }
 .login-page .login-header {
   position: relative;
   background: white;
-  padding: 100px 0;
+  padding: 20px 0;
   -moz-transition: all 550ms ease-in-out;
   -o-transition: all 550ms ease-in-out;
   -webkit-transition: all 550ms ease-in-out;
@@ -6653,7 +6654,7 @@ hr + .mail-env {
   width: 100%;
   text-align: center;
   top: 100%;
-  margin-top: 80px;
+  margin-top: 60px;
   visibility: hidden;
   -webkit-opacity: 0;
   -moz-opacity: 0;

@@ -63,6 +63,7 @@ public class RegistrarManagedBean {
 			 email.sendMail();
 		} catch (Exception ex) {
 			MensajesPF.errorMsj("Error_Revise los datos, si el error persiste contactese a la empresa");
+			System.out.println(ex);
 		}
 
 	}

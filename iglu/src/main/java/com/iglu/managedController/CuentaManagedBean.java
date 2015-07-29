@@ -4,9 +4,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-
+import com.iglu.security.SessionSpring;
 import com.iglu.spring.service.ClienteService;
 import com.iglu.util.MensajesPF;
 
@@ -23,27 +21,20 @@ public class CuentaManagedBean {
 	private String pass1;
 	private String pass2;
 	
-	private String username(){
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		 String username = null;
-		if (principal instanceof UserDetails) {
-		   username = ((UserDetails)principal).getUsername();
-		}
-		
-		return username;
-	}
 	
 	public void modificarPass(){
+		
 		try{
-	getClienteService().modificarPass(username(), pass1);
+	getClienteService().modificarPass(SessionSpring.getUsername(), pass1);
 	MensajesPF.infoMsj("Cambio exitoso_Su contraseña ha sido modificado");
 		}
 		catch(Exception ex){
-			MensajesPF.infoMsj("Error_No se ha podido modificar su contraseña");
+			MensajesPF.errorMsj("Error_No se ha podido modificar su contraseña");
 			
 		}
 		
 	}
+	
 	
 	
 	

@@ -31,6 +31,7 @@ Cuenta
 			<br />
 			<p:growl id="growl" sticky="true" showDetail="true" />
 			<div style="width: 90%; margin-left: 5%">
+				
 				<p:tabView>
 					<p:tab title="Cambio de Password">
 						<p:messages id="messages" showDetail="true"  />
@@ -43,18 +44,18 @@ Cuenta
     </h:panelGrid>
     <p:commandButton actionListener="#{cuentaMB.modificarPass}" update="messages" value="Save" />
 					</p:tab>
-					<p:tab title="Godfather Part II">
+					 <p:tab title="Info. Suscripcion">
 						<h:panelGrid columns="2" cellpadding="10">
 							<p:graphicImage name="demo/images/godfather/godfather2.jpg" />
 							<h:outputText value="Francis Ford Coppola's legendary..." />
 						</h:panelGrid>
 					</p:tab>
-					<p:tab title="Godfather Part III">
+				<!--	<p:tab title="Godfather Part III">
 						<h:panelGrid columns="2" cellpadding="10">
 							<p:graphicImage name="demo/images/godfather/godfather3.jpg" />
 							<h:outputText value="After a break of more than 15 years..." />
 						</h:panelGrid>
-					</p:tab>
+					</p:tab> -->
 				</p:tabView>
 
 
