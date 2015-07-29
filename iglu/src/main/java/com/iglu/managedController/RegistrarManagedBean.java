@@ -38,8 +38,17 @@ RegistrarService registrarService;
 	
 	public void registrar(){
 		cliente = new Cliente();
-		cliente.setEmail(email);
+		cliente.setCi(ci);
 		cliente.setNombres(nombres);
+		cliente.setApellidos(apellidos);
+		cliente.setEmail(email);
+		///telefonos
+		///direccion
+		cliente.setPostal(codPostal);
+		
+		
+		
+	
 		registrarService.suscribir(cliente);
 		
 		

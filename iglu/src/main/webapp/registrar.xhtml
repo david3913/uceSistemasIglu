@@ -26,42 +26,43 @@ Registrar
 			<br /> <br /> <br />
 			<p:growl id="growl" sticky="true" showDetail="true" />
 			<div style="width: 90%; margin-left: 5%">
-				<p:wizard flowListener="#{userWizard.onFlowProcess}" style="width:90%;">
-				
+				<p:wizard flowListener="#{userWizard.onFlowProcess}"
+					style="width:90%;">
+
 					<p:tab id="personal" title="Personal">
 						<p:panel header="Información Personal">
 							<p:messages />
-							<h:panelGrid columns="2" width="100%" columnClasses="label, value">
-								<h:outputText value="Cédula de identidad: *" />
-								<p:inputText value="#{registrarMB.ci}"
-									label="Firstname" />
+							<h:panelGrid columns="2" width="100%"
+								columnClasses="label, value">
+								<h:outputText value="Cédula de identidad:*" />
+								<p:inputText value="#{registrarMB.ci}" label="Firstname" />
 
-								<h:outputText value="Nombres: *" />
-								<p:inputText value="#{registrarMB.nombres}"
-									label="Firstname" />
+								<h:outputText value="Nombres:*" />
+								<p:inputText value="#{registrarMB.nombres}" label="Firstname" />
 
-								<h:outputText value="Apellidos: *" />
-								<p:inputText value="#{registrarMB.apellidos}"
-									label="Lastname" />
+								<h:outputText value="Apellidos:*" />
+								<p:inputText value="#{registrarMB.apellidos}" label="Lastname" />
 
-								
-								<h:outputText value="Email: *" />
-								<p:inputText value="#{registrarMB.email}" label="Email" />
 
-								<h:outputText value="Telefonos: " />
+								<h:outputText value="Email:*" />
+								<p:inputText value="#{registrarMB.email}" label="Email" validatorMessage="Sintaxis incorrecta" >
+							 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+								</p:inputText>
+
+								<h:outputText value="Telefonos:* " />
 								<p:inputText value="#{registrarMB.telefono}" />
 
-				
-								<h:outputText value="Direccion: " />
+
+								<h:outputText value="Direccion:*" />
 								<p:inputText value="#{registrarMB.direccion}" />
 
-																<h:outputText value="Codigo Postal: " />
+								<h:outputText value="Codigo Postal:*" />
 								<p:inputText value="#{registrarMB.codPostal}" />
-					</h:panelGrid>
+							</h:panelGrid>
 						</p:panel>
 					</p:tab>
 
-				
+
 
 
 
@@ -70,17 +71,21 @@ Registrar
 							<p:messages />
 							<h:panelGrid columns="2" columnClasses="label, value">
 								<h:outputText value="Tipo de tarjeta: " />
-								<h:selectOneMenu id="tipoTarjeta" value="#{registrarMB.tipTar}" style="width:125px">
+								<h:selectOneMenu id="tipoTarjeta" value="#{registrarMB.tipTar}"
+									style="width:125px">
 									<f:selectItem itemLabel="Visa" itemValue="Visa" />
 									<f:selectItem itemLabel="Amreican Espress" itemValue="American" />
 									<f:selectItem itemLabel="Master Card" itemValue="Master" />
-									
-								</h:selectOneMenu>
-  
-						<h:outputText value="Número de tarjeta: " />
-								<p:inputText value="#{registrarMB.num}" />
 
-							<!-- 	<h:outputText value="Fecha de caducidad" />
+								</h:selectOneMenu>
+
+								<h:outputText value="Número de tarjeta:*" />
+								<p:inputText value="#{registrarMB.num}" >
+								 <f:validateLength minimum="13" maximum="13" /> 
+								 <f:validateRegex pattern="^[0-9]+$" />
+								</p:inputText>
+
+								<!-- 	<h:outputText value="Fecha de caducidad" />
 								<p:inputText value="#{userWizard.user.phone}" />
  -->
 
@@ -102,18 +107,16 @@ Registrar
 										styleClass="outputLabel" />
 
 									<h:outputText value="Apellidos: " />
-									<h:outputText value="#{registrarMB.apellidos}"/>										
+									<h:outputText value="#{registrarMB.apellidos}" />
 
-									<h:outputText value="Fecha de Naciemiento: " />
-									<h:outputText value="#{userWizard.user.age}"
-										styleClass="outputLabel" />								</h:panelGrid>
+								</h:panelGrid>
 
 								<h:panelGrid columns="2" columnClasses="label, value">
 									<h:outputText value="Direccion: " />
 									<h:outputText value="#{registrarMB.direccion}"
 										styleClass="outputLabel" />
 
-									
+
 
 								</h:panelGrid>
 
@@ -146,7 +149,7 @@ Registrar
 			</div>
 		</form>
 
-<!-- 
+		<!-- 
 
 <div class="ui-grid ui-grid-responsive">
     <div class="ui-grid-row">
