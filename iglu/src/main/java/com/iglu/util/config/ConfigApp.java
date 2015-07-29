@@ -19,5 +19,7 @@ public class ConfigApp implements Serializable {
 	public static void setBaseServer(String baseServer) {
 		ConfigApp.baseServer = baseServer;
 	}
+	
+	////correo de la empresa y su contraseña...
 
 }

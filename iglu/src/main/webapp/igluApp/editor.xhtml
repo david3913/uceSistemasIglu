@@ -6,30 +6,20 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/templates/igluTemp2.xhtml">
-	
-			<ui:define name="title">
-IgluApp
-</ui:define>
 
 
-	<ui:define name="cssScript">
+<ui:define name="cssScript">
 		<h:outputStylesheet library="css" name="main.css" />
-		<h:outputStylesheet library="css" name="reset.css" />
+		
 
 		<h:outputScript library="js" name="jquery.js" />
-		<h:outputScript library="js" name="main.js" />
-
+		
 	</ui:define>
-  
-	<ui:define name="body">
-
-			<div style="width: 90%; margin-left: 5%; text-align: center;">
-			
-			<H1>IGLU APP</H1>
-			<img src="../resources/img/home.jpg" alt="Mountain View" style="width:100%;height:100%;"/>
-
-		</div>
 	
+
+	<ui:define name="body">
+<h:form>editor
+				 <p:editor/></h:form>
 
 	</ui:define>
 

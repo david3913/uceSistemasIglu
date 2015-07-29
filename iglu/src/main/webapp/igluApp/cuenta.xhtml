@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/templates/igluTemp2.xhtml">
+
+	<ui:define name="title">
+Cuenta
+</ui:define>
+
+
+	<ui:define name="cssScript">
+		<h:outputStylesheet library="css" name="main.css" />
+		<h:outputStylesheet library="css" name="reset.css" />
+
+		<h:outputScript library="js" name="jquery.js" />
+		<h:outputScript library="js" name="main.js" />
+		<h:outputStylesheet library="css" name="pf100.css"></h:outputStylesheet>
+		<h:outputStylesheet name="grid/grid.css" library="primefaces" />
+		
+	</ui:define>
+
+	<ui:define name="body">
+
+		<h:form>
+			<br />
+			<br />
+			<br />
+			<p:growl id="growl" sticky="true" showDetail="true" />
+			<div style="width: 90%; margin-left: 5%">
+				<p:tabView>
+					<p:tab title="Cambio de Password">
+						<p:messages id="messages" showDetail="true"  />
+    <h:panelGrid columns="2" columnClasses="label, value">                 
+        <h:outputLabel for="pwd1" value="Contraseña nueva: *" />
+        <p:password id="pwd1" value="#{cuentaMB.pass1}" match="pwd2" label="Password 1" required="true" />
+ 
+        <h:outputLabel for="pwd2" value="Repetir contraseña: *" />
+        <p:password id="pwd2" value="#{cuentaMB.pass2}" label="Password 2" required="true" />
+    </h:panelGrid>
+    <p:commandButton actionListener="#{cuentaMB.modificarPass}" update="messages" value="Save" />
+					</p:tab>
+					<p:tab title="Godfather Part II">
+						<h:panelGrid columns="2" cellpadding="10">
+							<p:graphicImage name="demo/images/godfather/godfather2.jpg" />
+							<h:outputText value="Francis Ford Coppola's legendary..." />
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Godfather Part III">
+						<h:panelGrid columns="2" cellpadding="10">
+							<p:graphicImage name="demo/images/godfather/godfather3.jpg" />
+							<h:outputText value="After a break of more than 15 years..." />
+						</h:panelGrid>
+					</p:tab>
+				</p:tabView>
+
+
+			</div>
+			
+			<p:commandButton actionListener="#{cuentaMB.cuenta}"></p:commandButton>
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+

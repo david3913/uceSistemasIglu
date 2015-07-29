@@ -4,10 +4,10 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"> 
 <head jsf:id="head">
 
-<title>VideoIglu</title>
+<title><ui:insert name="title">AppIglu</ui:insert></title>
 <meta charset="utf-8" />
 <meta name="author" content="pixelhint.com" />
 <meta name="description"
@@ -15,12 +15,9 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
-<h:outputStylesheet library="css" name="main.css" />
-<h:outputStylesheet library="css" name="reset.css" />
-<h:outputStylesheet library="css" name="pf100.css"></h:outputStylesheet>
-	<h:outputStylesheet name="grid/grid.css" library="primefaces" />
-<h:outputScript library="js" name="jquery.js" />
-<h:outputScript library="js" name="main.js" />
+<!-- #################### -->
+<ui:insert name="cssScript"></ui:insert>
+
    <style type="text/css">
             .label {
                 width:20%;
@@ -52,9 +49,10 @@
 </head>
 <body jsf:id="body">
 	<header>
-	<ui:insert name="logo">
-
-			</ui:insert>
+	<div class="logo">
+			<a href="index.html"><img src="resources/img/1.jpg"
+				title="Magnetic" alt="Magnetic" style="height: 50px; width: 100px;" /></a>
+		</div>
 		
 		<!-- end logo -->
 

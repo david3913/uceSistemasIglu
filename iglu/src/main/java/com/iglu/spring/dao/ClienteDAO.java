@@ -17,6 +17,7 @@ public class ClienteDAO {
 	public void insertCliente(Cliente cliente){
 		
 		getSessionFactory().getCurrentSession().save(cliente);
+		
 	
 			}
 	

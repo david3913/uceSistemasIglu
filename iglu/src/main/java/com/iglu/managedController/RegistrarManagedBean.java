@@ -1,60 +1,80 @@
 package com.iglu.managedController;
 
+import java.util.Date;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import com.iglu.spring.model.Cliente;
-import com.iglu.spring.service.RegistrarService;
+import com.iglu.spring.model.Tarjeta;
+import com.iglu.spring.service.ClienteService;
+import com.iglu.util.Email;
+import com.iglu.util.MensajesPF;
 
 //Bean facilita la captura y tranmisin de datos
-@ManagedBean(name="registrarMB")
+@ManagedBean(name = "registrarMB")
 @ViewScoped
 public class RegistrarManagedBean {
 
-	
-	//Inyeccion del servicio
-@ManagedProperty(value = "#{RegistrarService}")
-RegistrarService registrarService;	
-//	
- 
-//	List<Genero> categoriaList ;
-	
+	// Inyeccion del servicio
+	@ManagedProperty(value = "#{ClienteService}")
+	ClienteService clienteService;
+	//
+
+	// List<Genero> categoriaList ;
+
 	private String ci;
 	private String nombres;
 	private String apellidos;
 	private String email;
 	private String direccion;
-	private String telefono;
-	private String codPostal ;
+	private String telefonos;
+	private String codPostal;
 	private String tipTar;
-	private String num;
-	private String caducidad;
-	
-	private Cliente cliente ;
+	private String numero;
+	private Date caducidad;
+	// tipo de dato fecha de caducidad//
 
-	
-	
-	
-	public void registrar(){
+	private Cliente cliente;
+	private Tarjeta tarjeta;
+
+	public void registrar() {
 		cliente = new Cliente();
 		cliente.setCi(ci);
 		cliente.setNombres(nombres);
 		cliente.setApellidos(apellidos);
 		cliente.setEmail(email);
-		///telefonos
-		///direccion
+		cliente.setTelefonos(telefonos);
+		cliente.setDireccion(direccion);
 		cliente.setPostal(codPostal);
-		
-		
-		
-	
-		registrarService.suscribir(cliente);
-		
-		
+
+		// tarjeta.setNumero(numero);
+		// tarjeta.setTipo(tipTar);
+		// tarjeta.setCaducidad(caducidad);
+
+		try {
+			String aux=clienteService.suscribir(cliente);
+			MensajesPF.infoMsj("Registro exitoso_Favor revise su correo electrónico para la confirmacion");
+			Email email= new Email(cliente.getEmail(), "Registro exitoso", 
+					"Ahora puede acceder a nuestros servicios con la contraseña"+aux);
+			 email.sendMail();
+		} catch (Exception ex) {
+			MensajesPF.errorMsj("Error_Revise los datos, si el error persiste contactese a la empresa");
+		}
+
 	}
-	
-	
+
+	public ClienteService getClienteService() {
+		return clienteService;
+	}
+
+	public void setClienteService(ClienteService clienteService) {
+		this.clienteService = clienteService;
+	}
+
 	public String getCi() {
 		return ci;
 	}
@@ -95,12 +115,12 @@ RegistrarService registrarService;
 		this.direccion = direccion;
 	}
 
-	public String getTelefono() {
-		return telefono;
+	public String getTelefonos() {
+		return telefonos;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setTelefonos(String telefonos) {
+		this.telefonos = telefonos;
 	}
 
 	public String getCodPostal() {
@@ -111,14 +131,6 @@ RegistrarService registrarService;
 		this.codPostal = codPostal;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
 	public String getTipTar() {
 		return tipTar;
 	}
@@ -127,33 +139,36 @@ RegistrarService registrarService;
 		this.tipTar = tipTar;
 	}
 
-	public String getNum() {
-		return num;
+	public String getNumero() {
+		return numero;
 	}
 
-	public void setNum(String num) {
-		this.num = num;
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
-	public String getCaducidad() {
+	public Date getCaducidad() {
 		return caducidad;
 	}
 
-	public void setCaducidad(String caducidad) {
+	public void setCaducidad(Date caducidad) {
 		this.caducidad = caducidad;
 	}
 
-
-	public RegistrarService getRegistrarService() {
-		return registrarService;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-
-	public void setRegistrarService(RegistrarService registrarService) {
-		this.registrarService = registrarService;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
-	
-	
-	
+	public Tarjeta getTarjeta() {
+		return tarjeta;
 	}
+
+	public void setTarjeta(Tarjeta tarjeta) {
+		this.tarjeta = tarjeta;
+	}
+
+}

@@ -16,8 +16,6 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="USERS_USERNAME_GENERATOR", sequenceName="USERS_USERS_ID_SEQ")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USERS_USERNAME_GENERATOR")
 	private String username;
 
 	private Boolean enabled;

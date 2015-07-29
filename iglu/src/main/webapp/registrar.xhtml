@@ -11,14 +11,18 @@
 	<ui:define name="title">
 Registrar
 </ui:define>
-	<ui:define name="logo">
 
-		<div class="logo">
-			<a href="index.html"><img src="resources/img/1.jpg"
-				title="Magnetic" alt="Magnetic" style="height: 50px; width: 100px;" /></a>
-		</div>
+	<ui:define name="cssScript">
+		<h:outputStylesheet library="css" name="main.css" />
+		<h:outputStylesheet library="css" name="reset.css" />
+		<h:outputStylesheet library="css" name="pf100.css"></h:outputStylesheet>
+		<h:outputStylesheet name="grid/grid.css" library="primefaces" />
+
+		<h:outputScript library="js" name="main.js" />
 	</ui:define>
+
 	<ui:define name="body">
+	<p:growl id="growl"  showDetail="true" sticky="true" /> 
 
 		<form jsf:id="form" method="post">
 
@@ -26,8 +30,7 @@ Registrar
 			<br /> <br /> <br />
 			<p:growl id="growl" sticky="true" showDetail="true" />
 			<div style="width: 90%; margin-left: 5%">
-				<p:wizard flowListener="#{userWizard.onFlowProcess}"
-					style="width:90%;">
+				<p:wizard style="width:90%;">
 
 					<p:tab id="personal" title="Personal">
 						<p:panel header="Información Personal">
@@ -45,12 +48,14 @@ Registrar
 
 
 								<h:outputText value="Email:*" />
-								<p:inputText value="#{registrarMB.email}" label="Email" validatorMessage="Sintaxis incorrecta" >
-							 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+								<p:inputText value="#{registrarMB.email}" label="Email"
+									validatorMessage="Sintaxis incorrecta">
+									<f:validateRegex
+										pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 								</p:inputText>
 
 								<h:outputText value="Telefonos:* " />
-								<p:inputText value="#{registrarMB.telefono}" />
+								<p:inputText value="#{registrarMB.telefonos}" />
 
 
 								<h:outputText value="Direccion:*" />
@@ -74,17 +79,20 @@ Registrar
 								<h:selectOneMenu id="tipoTarjeta" value="#{registrarMB.tipTar}"
 									style="width:125px">
 									<f:selectItem itemLabel="Visa" itemValue="Visa" />
-									<f:selectItem itemLabel="Amreican Espress" itemValue="American" />
-									<f:selectItem itemLabel="Master Card" itemValue="Master" />
+									<f:selectItem itemLabel="Amreican Espress"
+										itemValue="Amreican Espress" />
+									<f:selectItem itemLabel="Master Card" itemValue="Master Card" />
 
 								</h:selectOneMenu>
 
 								<h:outputText value="Número de tarjeta:*" />
-								<p:inputText value="#{registrarMB.num}" >
-								 <f:validateLength minimum="13" maximum="13" /> 
-								 <f:validateRegex pattern="^[0-9]+$" />
+								<p:inputText value="#{registrarMB.numero}">
+									<f:validateLength minimum="13" maximum="13" />
+									<f:validateRegex pattern="^[0-9]+$" />
 								</p:inputText>
-
+								<h:outputText value="fecha:*" />
+								<p:calendar id="mask" value="#{registrarMB.caducidad}"
+									pattern="dd-MM-yyyy" navigator="true" mode="inline" mask="true" />
 								<!-- 	<h:outputText value="Fecha de caducidad" />
 								<p:inputText value="#{userWizard.user.phone}" />
  -->
@@ -99,44 +107,86 @@ Registrar
 
 					<p:tab id="confirm" title="Confirmación">
 						<p:panel header="Confirmación">
-							<h:panelGrid id="confirmation" columns="3"
-								columnClasses="grid,grid,grid">
+
+							<h:panelGrid id="confirmation" columns="2"
+								columnClasses="grid,grid">
+
 								<h:panelGrid columns="2" columnClasses="label, value">
+									<f:facet name="header">Inf. Personal</f:facet>
+									<h:outputText />
+									<h:outputText />
+									<h:outputText value="CI: " />
+									<h:outputText value="#{registrarMB.ci}"
+										styleClass="outputLabel" />
+									<h:outputText />
+									<h:outputText />
 									<h:outputText value="Nombres: " />
 									<h:outputText value="#{registrarMB.nombres}"
 										styleClass="outputLabel" />
-
+									<h:outputText />
+									<h:outputText />
 									<h:outputText value="Apellidos: " />
-									<h:outputText value="#{registrarMB.apellidos}" />
-
-								</h:panelGrid>
-
-								<h:panelGrid columns="2" columnClasses="label, value">
-									<h:outputText value="Direccion: " />
-									<h:outputText value="#{registrarMB.direccion}"
+									<h:outputText value="#{registrarMB.apellidos}"
 										styleClass="outputLabel" />
-
-
-
-								</h:panelGrid>
-
-								<h:panelGrid columns="2" columnClasses="label, value">
+									<h:outputText />
+									<h:outputText />
 									<h:outputText value="Email: " />
 									<h:outputText value="#{registrarMB.email}"
 										styleClass="outputLabel" />
+									<h:outputText />
+									<h:outputText />
+								</h:panelGrid>
+
+								<h:panelGrid columns="2" columnClasses="label, value">
+									<f:facet name="header">Inf. Contacto</f:facet>
+									<h:outputText />
+									<h:outputText />
+									<h:outputText value="Direccion: " />
+									<h:outputText value="#{registrarMB.direccion}"
+										styleClass="outputLabel" />
+									<h:outputText />
+									<h:outputText />
 
 									<h:outputText value="Telefonos: " />
-									<h:outputText value="#{registrarMB.telefono}"
+									<h:outputText value="#{registrarMB.telefonos}"
 										styleClass="outputLabel" />
+									<h:outputText />
+									<h:outputText />
+
+									<h:outputText value="Postal: " />
+									<h:outputText value="#{registrarMB.codPostal}"
+										styleClass="outputLabel" />
+									<h:outputText />
+									<h:outputText />
+
+								</h:panelGrid>
+
+								<h:panelGrid columns="2" columnClasses="label, value">
+									<f:facet name="header" >Inf. Tarjeta </f:facet>
+									<h:outputText />
+									<h:outputText />
+
+									<h:outputText value="Tarjeta " />
+									<h:outputText value="#{registrarMB.tipTar}"
+										styleClass="outputLabel" />
+									<h:outputText />
+									<h:outputText />
 
 									<h:outputText value="N° tarjeta de crédito " />
-									<h:outputText value="#{registrarMB.num}"
+									<h:outputText value="#{registrarMB.numero}"
 										styleClass="outputLabel" />
+									<h:outputText />
+									<h:outputText />
 
-
+									<h:outputText value="caducidad " />
+									<h:outputText value="#{registrarMB.caducidad}"
+										styleClass="outputLabel">
+										<f:convertDateTime pattern="dd-MM-yyyy" />
+									</h:outputText>
 
 									<h:outputText />
 									<h:outputText />
+
 								</h:panelGrid>
 							</h:panelGrid>
 
@@ -158,6 +208,7 @@ Registrar
     </div>
 </div>
  -->
+
 
 	</ui:define>
 

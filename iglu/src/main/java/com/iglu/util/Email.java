@@ -55,10 +55,19 @@ public class Email {
 	 * @param asunto
 	 * @param mensaje
 	 */
-	public Email(String origen, String passwd, String destino, String asunto,
+	public  Email(String origen, String passwd, String destino, String asunto,
 			String mensaje) {
 		this.origen = origen;
 		this.passwd = passwd;
+		this.destino = destino;
+		this.asunto = asunto;
+		this.mensaje = mensaje;
+	}
+	
+	public  Email( String destino, String asunto,
+			String mensaje) {
+		this.origen = "miempresa123@hotmail.com";
+		this.passwd = "daxer123";
 		this.destino = destino;
 		this.asunto = asunto;
 		this.mensaje = mensaje;

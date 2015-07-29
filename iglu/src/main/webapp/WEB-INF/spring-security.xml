@@ -20,11 +20,11 @@
 		<access-denied-handler error-page="/403.html?faces-redirect=true" />
 	
 
-	 <intercept-url pattern="/**/home.xhtml" access="hasRole('u1')"  />
+	<!--  <intercept-url pattern="/**/home.xhtml" access="hasRole('u1')"  />
 	 	 <intercept-url pattern="/**/visor.xhtml" access="hasRole('u2')"  />
 	 	 	 <intercept-url pattern="/**/pelisList.xhtml" access="hasRole('u3')"  />
-	 	 	 	 <intercept-url pattern="/igluApp/*" access="permitAll"  />
-		<intercept-url pattern="/*" access="permitAll" />
+	 	 	 	 <intercept-url pattern="/igluApp/*" access="permitAll"  /> -->
+		<intercept-url pattern="/**" access="permitAll" />
 		
 		<session-management invalid-session-url="/login.xhtml">
 			<concurrency-control max-sessions="1" />

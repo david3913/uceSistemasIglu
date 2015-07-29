@@ -10,9 +10,9 @@ public class Test1 {
 
 
 	public static void main(String[] args) {
-		 Email enviar = new Email("miempresa123@hotmail.com", "daxer123",
-				 "a_david55@hotmail.com", "IGLU - Registro", "Su usuario es: ");
-		 enviar.sendMail();
+//		 Email enviar = new Email("miempresa123@hotmail.com", "daxer123",
+//				 "a_david55@hotmail.com", "IGLU - Registro", "Su usuario es: ");
+//		 enviar.sendMail();
 		// EmpresaDaoImpl a = new EmpresaDaoImpl();
 		// a.empH();
 		// Empresa b= new Empresa();

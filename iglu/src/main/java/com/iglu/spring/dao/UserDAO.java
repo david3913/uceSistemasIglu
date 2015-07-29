@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iglu.spring.model.Cliente;
+import com.iglu.spring.model.Pelicula;
 import com.iglu.spring.model.User;
 
 @Repository
@@ -12,14 +13,25 @@ public class UserDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	
-	public void insertUser(User user){
-		
+	public void insertUser(User user) {
+
 		getSessionFactory().getCurrentSession().save(user);
-			}
+	}
+
+	public void updateUser(User user) {
+		getSessionFactory().getCurrentSession().update(user);
+	}
+
 	
-	
-	
+	public User getUser(String username) {
+
+		@SuppressWarnings("unchecked")
+		User user = (User) getSessionFactory().getCurrentSession()
+				.createQuery("from User where username = ?").setParameter(0, username).list().get(0);
+
+		return user;
+	}
+
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
