@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:component-scan base-package="com.iglu" />
+
+
+	 <bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/config/server.properties</value>
+				<value>/WEB-INF/config/database.properties</value>
+			</list>
+		</property>
+
+	</bean>
+
+
+	<context:annotation-config />
+	<context:spring-configured />
+
+<bean id="dataSource" destroy-method="close"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${jdbc.user}" />
+		<property name="driverClass" value="${jdbc.driver}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="password" value="${jdbc.pass}" />
+		<property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}" />
+		<property name="minPoolSize" value="${jdbc.minPoolSize}" />
+		<property name="maxIdleTime" value="${jdbc.maxIdleTime}" />
+
+ 
+	</bean>
+
+	<!-- Session Factory Declaration -->
+	<bean id="SessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>com.iglu.spring.model</value>
+			</list>
+		</property>
+		<!-- <property name="annotatedClasses"> <list> <value>dx.spring.model.User</value> 
+			</list> </property> -->
+		<property name="hibernateProperties">
+			<props>
+<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.use_sql_comments">false</prop>
+				<prop key="hibernate.auto_close_session">true</prop>
+			</props>
+		</property>
+
+
+	</bean>
+
+
+
+	<!-- class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="username" value="damaya" />
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost:5432/iglu" />
+		<property name="password" value="damaya" />
+	</bean>
+
+	 Session Factory Declaration 
+	<bean id="SessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>com.iglu.spring.model</value>
+			</list>
+		</property>
+	 	<property name="annotatedClasses">
+			<list>
+				<value>dx.spring.model.User</value>
+			</list>
+		</property> 
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>-->
+
+	
+	<!-- Transaction Manager is defined -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="SessionFactory" />
+	</bean>
+<!-- Enable the configuration of transactional behavior based on annotations -->
+	<tx:annotation-driven transaction-manager="txManager" />
+
+
+
+<bean id="configApp" class="com.iglu.util.config.ConfigApp">
+<property name="baseServer" value="${server.path0}"></property>
+</bean>
+
+</beans>
+

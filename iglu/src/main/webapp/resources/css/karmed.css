@@ -1,0 +1,122 @@
+@CHARSET "ISO-8859-1";
+
+.calendar {
+	width: 720px;
+}
+
+.dr {
+	font-family: sans-serif;
+	font-weight: 900;
+	font-size: x-large;
+}
+
+.marca {
+	width: 150px;
+}
+
+.ui-top,.ui-top .ui-layout {
+	background-image: none;
+	background: rgb(0, 108, 170); /* Old browsers */
+	background: -moz-linear-gradient(-45deg, rgba(0, 108, 170, 1) 17%,
+		rgba(112, 148, 168, 1) 26%, rgba(0, 108, 170, 1) 34%,
+		rgba(0, 108, 170, 1) 55%, rgba(104, 146, 170, 1) 64%,
+		rgba(0, 108, 170, 1) 71%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(17%, rgba(0,
+		108, 170, 1)), color-stop(26%, rgba(112, 148, 168, 1)),
+		color-stop(34%, rgba(0, 108, 170, 1)),
+		color-stop(55%, rgba(0, 108, 170, 1)),
+		color-stop(64%, rgba(104, 146, 170, 1)),
+		color-stop(71%, rgba(0, 108, 170, 1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg, rgba(0, 108, 170, 1) 17%,
+		rgba(112, 148, 168, 1) 26%, rgba(0, 108, 170, 1) 34%,
+		rgba(0, 108, 170, 1) 55%, rgba(104, 146, 170, 1) 64%,
+		rgba(0, 108, 170, 1) 71%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg, rgba(0, 108, 170, 1) 17%,
+		rgba(112, 148, 168, 1) 26%, rgba(0, 108, 170, 1) 34%,
+		rgba(0, 108, 170, 1) 55%, rgba(104, 146, 170, 1) 64%,
+		rgba(0, 108, 170, 1) 71%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg, rgba(0, 108, 170, 1) 17%,
+		rgba(112, 148, 168, 1) 26%, rgba(0, 108, 170, 1) 34%,
+		rgba(0, 108, 170, 1) 55%, rgba(104, 146, 170, 1) 64%,
+		rgba(0, 108, 170, 1) 71%); /* IE10+ */
+	background: linear-gradient(135deg, rgba(0, 108, 170, 1) 17%,
+		rgba(112, 148, 168, 1) 26%, rgba(0, 108, 170, 1) 34%,
+		rgba(0, 108, 170, 1) 55%, rgba(104, 146, 170, 1) 64%,
+		rgba(0, 108, 170, 1) 71%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006caa',
+		endColorstr='#006caa', GradientType=1);
+	/* IE6-9 fallback on horizontal gradient */
+}
+
+.ui-top .ui-layout-unit-content,.ui-top .ui-layout-unit {
+	background-color: transparent;
+	background-image: none;
+	font-family: sans-serif;
+	font-size: medium;
+	font-weight: 900;
+	border-color: transparent;
+	color: white;
+}
+
+.input100p {
+	width:90%;
+}
+
+.input200 {
+	width: 200px;
+}
+
+
+
+.input600 {
+	width: 600px;
+}
+.input1065 {
+	width: 1065px;
+}
+
+.input30 {
+	width: 30px;
+}
+
+.input50 {
+	width: 50px;
+}
+.input60 {
+	width: 60px;
+}
+
+.textArea300-35 {
+	width: 300px;
+	height: 35px;
+}
+.textArea100p-35 {
+	width: 100%;
+	height: 35px;
+}
+.textArea90p-50 {
+	width: 90%;
+	height: 50px;
+}
+
+
+.textArea350-50 {
+	width: 350px;
+	height: 50px;
+}
+.textArea800-40 {
+	width: 800px;
+	height: 40px;
+}
+
+.textArea1065-20 {
+	width: 1065px;
+	height: 50px;
+}
+
+
+
+.ui-fieldset .ui-fieldset-legend {
+	font-size: 11px;
+}
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head jsf:id="head">
+
+<title>VideoIglu</title>
+<meta charset="utf-8" />
+<meta name="author" content="pixelhint.com" />
+<meta name="description"
+	content="Magnetic is a stunning responsive HTML5/CSS3 photography/portfolio website template" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="css/reset.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body jsf:id="body">
+	<header>
+		<div class="logo">
+			<a href="index.html"><img src="img/1.jpg" title="Magnetic"
+				alt="Magnetic" style="height: 50px; width: 100px;" /></a>
+		</div>
+		<!-- end logo -->
+
+		<div id="menu_icon"></div>
+		<form jsf:id="form" method="post">
+
+
+			<nav>
+
+				<ul>
+
+				<li><a href="index.xhtml" class="selected">Inicio</a></li>
+				<li><a href="#">Nosotros</a></li>
+				<li><a href="ingresar.xhtml">Películas</a></li>
+				<li><a href="ingresar.xhtml">Tienda</a></li>
+				<li><a href="contacto.xhtml">Contacto</a></li>
+				<li><a href="registro.xhtml">Cerrar Sesión</a></li>
+			</ul>
+			</nav>
+
+		</form>
+		<!-- end navigation menu -->
+
+		<div class="footer clearfix">
+			
+			<ul class="social clearfix">
+
+				<li><a href="#" class="fb" data-title="Facebook"></a></li>
+				<li><a href="#" class="google" data-title="Google +"></a></li>
+				<li><a href="#" class="behance" data-title="Behance"></a></li>
+				<!--<li><a href="#" class="twitter" data-title="Twitter"></a></li>
+				<li><a href="#" class="dribble" data-title="Dribble"></a></li>-->
+				<li><a href="#" class="rss" data-title="RSS"></a></li>
+			</ul>
+
+			<!-- end social -->
+
+			<div class="rights">
+				<!-- <p>Copyright © 2014 magnetic.</p>
+				<p>
+					Template by <a href="">Pixelhint.com</a>
+				</p> -->
+				<p>Copyright © 2014 DPM.</p>
+				<p>
+				<a href="">iglumovies.com</a>
+				</p>
+			</div>
+			<!-- end rights -->
+		</div>
+		<!-- end footer -->
+	</header>
+	<!-- end header -->
+
+
+	<section class="main clearfix">
+
+		<div style="width: 90%; margin-left: 5%">
+			<p:panel id="basic" header="Filtros de Búsqueda"
+				style="margin-bottom:20px;margin-top:20px;">
+				<h:panelGrid columns="2" cellpadding="10">
+
+					<h:outputText value="Filtros de busqueda por genero año" />
+				</h:panelGrid>
+				<p:commandButton value="Buscar"></p:commandButton>
+			</p:panel>
+			<form jsf:id="form2" method="post">
+
+				<p:dataGrid var="p" value="#{pelis.pelis}" columns="4"
+					layout="tabular" rows="8" paginator="true" id="cars"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+					rowsPerPageTemplate="6,12,16">
+					<h:panelGrid columns="1" style="width:100%">
+						<h:outputText value="#{p.html}" escape="false" />
+
+					</h:panelGrid>
+
+
+
+				</p:dataGrid>
+
+
+			</form>
+
+		</div>
+	</section>
+
+
+	<footer>Programacion Daxer</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/templates/igluTemp2.xhtml">
+<ui:define name="title">
+Peliculas
+</ui:define>
+
+
+	<ui:define name="cssScript">
+		<h:outputStylesheet library="css" name="main.css" />
+		<h:outputStylesheet library="css" name="reset.css" />
+
+		<h:outputScript library="js" name="jquery.js" />
+		<h:outputScript library="js" name="main.js" />
+	</ui:define>
+
+	<ui:define name="body">
+
+		<div style="width: 90%; margin-left: 5%">
+		<form jsf:id="form2" method="post">
+			<p:panel id="basic" header="Filtros de Búsqueda"
+				style="margin-bottom:20px;margin-top:20px;">
+				<h:panelGrid columns="2" cellpadding="10">
+
+					<h:outputText value="titulo" />
+					<p:inputText value="#{pelisListMB.titulo}"></p:inputText>
+					<!--  <h:outputText value="genero" />
+					<p:inputText value="#{pelisListMB.genero}"></p:inputText>-->
+				</h:panelGrid>
+				<p:commandButton value="Buscar" actionListener="#{pelisListMB.encontrarPeliculas}" update="listaPelis"></p:commandButton>
+			</p:panel>
+			
+
+				<p:dataGrid   widgetVar="listaPelis" var="p" value="#{pelisListMB.peliculasList}" columns="4"
+					layout="tabular" rows="12" paginator="true" id="listaPelis"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+					rowsPerPageTemplate="6,12,16">
+					<h:panelGrid columns="1" style="width:100%">
+						<h:outputText value="#{p}" escape="false" />
+
+					</h:panelGrid>
+
+
+
+				</p:dataGrid>
+</form>
+
+			
+
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+

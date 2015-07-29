@@ -1,0 +1,144 @@
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/templates/igluTemp2.xhtml">
+	
+		<ui:define name="title">
+Suscribirse
+</ui:define>
+
+
+	<ui:define name="cssScript">
+		<h:outputStylesheet library="css" name="main.css" />
+		<h:outputStylesheet library="css" name="reset.css" />
+
+		<h:outputScript library="js" name="jquery.js" />
+		<h:outputScript library="js" name="main.js" />
+	</ui:define>
+  
+	<ui:define name="body">
+
+			<h:form>
+			<br />
+			<br />
+			<br />
+			<p:growl id="growl" sticky="true" showDetail="true" />
+			<div style="width: 90%; margin-left: 5%">
+				<p:wizard flowListener="#{userWizard.onFlowProcess}">
+					<p:tab id="personal" title="Suscripción">
+						<p:panel header="Datos de suscripción">
+							<p:messages />
+							<h:panelGrid columns="2" columnClasses="label, value">
+								<h:outputText value="Meses a contratar: " />
+								<p:inputText value="#{userWizard.user.firstname}" />
+
+								<h:outputText value="Nombres: *" />
+								<p:inputText value="#{userWizard.user.firstname}"
+									disabled="true" />
+
+								<h:outputText value="Apellidos: *" />
+								<p:inputText value="#{userWizard.user.lastname}" disabled="true" />
+
+								<h:outputText value="Valor a se cobrado" />
+								<p:inputText value="#{userWizard.user.firstname}"
+									disabled="true" />
+
+								<h:outputText value="Fecha de vencimiento" />
+								<p:inputText value="#{userWizard.user.firstname}"
+									disabled="true" />
+
+								
+
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+
+					<p:tab id="credit" title="Tarjeta">
+						<p:panel header="Información tarjeta de crédito">
+							<h:panelGrid columns="2" columnClasses="label, value">
+								<h:outputText value="Número de tarjeta: " />
+								<p:inputText value="#{userWizard.user.phone}" />
+
+								<h:outputText value="Codigo de Seguridad: " />
+								<p:inputText value="#{userWizard.user.phone}" />
+
+								<h:outputText value="Fecha de caducidad" />
+								<p:inputText value="#{userWizard.user.phone}" />
+
+								<h:outputText value="Número de meses a diferir" />
+								<p:inputText value="#{userWizard.user.phone}" />
+
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+
+
+					<p:tab id="confirm" title="Confirmación">
+						<p:panel header="Confirmación">
+						<p:commandButton value="Generar código de seguridad"></p:commandButton>
+							<h:panelGrid id="confirmation" columns="3"
+								columnClasses="grid,grid,grid">
+								<h:panelGrid columns="2" columnClasses="label, value">
+									<h:outputText value="Nombre: " />
+									<h:outputText value="#{userWizard.user.firstname}"
+										styleClass="outputLabel" />
+
+									<h:outputText value="Apellidos: " />
+									<h:outputText value="#{userWizard.user.lastname}"
+										styleClass="outputLabel" />
+
+									<h:outputText value="Monto Total: " />
+									<h:outputText value="#{userWizard.user.age}"
+										styleClass="outputLabel" />
+								</h:panelGrid>
+
+								<h:panelGrid columns="2" columnClasses="label, value">
+									<h:outputText value="Número de tarjeta: " />
+									<h:outputText value="#{userWizard.user.street}"
+										styleClass="outputLabel" />
+
+									<h:outputText value="Código de seguridad: " />
+									<p:inputText value="#{userWizard.user.phone}" />
+
+
+									<h:outputText value="City: " />
+									<h:outputText value="#{userWizard.user.city}"
+										styleClass="outputLabel" />
+								</h:panelGrid>
+
+								<h:panelGrid columns="2" columnClasses="label, value">
+									<h:outputText value="Email: " />
+									<h:outputText value="#{userWizard.user.email}"
+										styleClass="outputLabel" />
+
+									<h:outputText value="Phone " />
+									<h:outputText value="#{userWizard.user.phone}"
+										styleClass="outputLabel" />
+
+									<h:outputText value="Info: " />
+									<h:outputText value="#{userWizard.user.info}"
+										styleClass="outputLabel" />
+
+									<h:outputText />
+									<h:outputText />
+								</h:panelGrid>
+							</h:panelGrid>
+
+							<p:commandButton value="Registrar"
+								actionListener="#{userWizard.save}" update="growl"
+								process="@this" />
+						</p:panel>
+					</p:tab>
+				</p:wizard>
+			</div>
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+

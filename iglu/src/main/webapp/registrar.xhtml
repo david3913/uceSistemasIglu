@@ -1,0 +1,162 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/templates/igluTemp1.xhtml">
+
+
+	<ui:define name="title">
+Registrar
+</ui:define>
+	<ui:define name="logo">
+
+		<div class="logo">
+			<a href="index.html"><img src="resources/img/1.jpg"
+				title="Magnetic" alt="Magnetic" style="height: 50px; width: 100px;" /></a>
+		</div>
+	</ui:define>
+	<ui:define name="body">
+
+		<form jsf:id="form" method="post">
+
+
+			<br /> <br /> <br />
+			<p:growl id="growl" sticky="true" showDetail="true" />
+			<div style="width: 90%; margin-left: 5%">
+				<p:wizard flowListener="#{userWizard.onFlowProcess}" style="width:90%;">
+				
+					<p:tab id="personal" title="Personal">
+						<p:panel header="Información Personal">
+							<p:messages />
+							<h:panelGrid columns="2" width="100%" columnClasses="label, value">
+								<h:outputText value="Cédula de identidad: *" />
+								<p:inputText value="#{registrarMB.ci}"
+									label="Firstname" />
+
+								<h:outputText value="Nombres: *" />
+								<p:inputText value="#{registrarMB.nombres}"
+									label="Firstname" />
+
+								<h:outputText value="Apellidos: *" />
+								<p:inputText value="#{registrarMB.apellidos}"
+									label="Lastname" />
+
+								
+								<h:outputText value="Email: *" />
+								<p:inputText value="#{registrarMB.email}" label="Email" />
+
+								<h:outputText value="Telefonos: " />
+								<p:inputText value="#{registrarMB.telefono}" />
+
+				
+								<h:outputText value="Direccion: " />
+								<p:inputText value="#{registrarMB.direccion}" />
+
+																<h:outputText value="Codigo Postal: " />
+								<p:inputText value="#{registrarMB.codPostal}" />
+					</h:panelGrid>
+						</p:panel>
+					</p:tab>
+
+				
+
+
+
+					<p:tab id="credit" title="Tarjeta">
+						<p:panel header="Información tarjeta de crédito">
+							<p:messages />
+							<h:panelGrid columns="2" columnClasses="label, value">
+								<h:outputText value="Tipo de tarjeta: " />
+								<h:selectOneMenu id="tipoTarjeta" value="#{registrarMB.tipTar}" style="width:125px">
+									<f:selectItem itemLabel="Visa" itemValue="Visa" />
+									<f:selectItem itemLabel="Amreican Espress" itemValue="American" />
+									<f:selectItem itemLabel="Master Card" itemValue="Master" />
+									
+								</h:selectOneMenu>
+  
+						<h:outputText value="Número de tarjeta: " />
+								<p:inputText value="#{registrarMB.num}" />
+
+							<!-- 	<h:outputText value="Fecha de caducidad" />
+								<p:inputText value="#{userWizard.user.phone}" />
+ -->
+
+
+
+
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+
+
+					<p:tab id="confirm" title="Confirmación">
+						<p:panel header="Confirmación">
+							<h:panelGrid id="confirmation" columns="3"
+								columnClasses="grid,grid,grid">
+								<h:panelGrid columns="2" columnClasses="label, value">
+									<h:outputText value="Nombres: " />
+									<h:outputText value="#{registrarMB.nombres}"
+										styleClass="outputLabel" />
+
+									<h:outputText value="Apellidos: " />
+									<h:outputText value="#{registrarMB.apellidos}"/>										
+
+									<h:outputText value="Fecha de Naciemiento: " />
+									<h:outputText value="#{userWizard.user.age}"
+										styleClass="outputLabel" />								</h:panelGrid>
+
+								<h:panelGrid columns="2" columnClasses="label, value">
+									<h:outputText value="Direccion: " />
+									<h:outputText value="#{registrarMB.direccion}"
+										styleClass="outputLabel" />
+
+									
+
+								</h:panelGrid>
+
+								<h:panelGrid columns="2" columnClasses="label, value">
+									<h:outputText value="Email: " />
+									<h:outputText value="#{registrarMB.email}"
+										styleClass="outputLabel" />
+
+									<h:outputText value="Telefonos: " />
+									<h:outputText value="#{registrarMB.telefono}"
+										styleClass="outputLabel" />
+
+									<h:outputText value="N° tarjeta de crédito " />
+									<h:outputText value="#{registrarMB.num}"
+										styleClass="outputLabel" />
+
+
+
+									<h:outputText />
+									<h:outputText />
+								</h:panelGrid>
+							</h:panelGrid>
+
+							<p:commandButton value="Registrar"
+								actionListener="#{registrarMB.registrar}" update="growl"
+								process="@this" />
+						</p:panel>
+					</p:tab>
+				</p:wizard>
+			</div>
+		</form>
+
+<!-- 
+
+<div class="ui-grid ui-grid-responsive">
+    <div class="ui-grid-row">
+        <div class="ui-grid-col-6"><h:outputText value="Fecha de caducidad" /></div>
+        <div class="ui-grid-col-6"><p:inputText value="#{userWizard.user.phone}" /></div>
+    </div>
+</div>
+ -->
+
+	</ui:define>
+
+</ui:composition>
+

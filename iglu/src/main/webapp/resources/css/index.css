@@ -1,0 +1,96 @@
+@CHARSET "ISO-8859-1";
+
+#contenedor {
+	width: 1024px;
+	margin: 0 auto;
+	border-radius: 50px 3px 50px 3px;
+	-moz-border-radius: 50px 3px 50px 3px;
+	-webkit-border-radius: 50px 50px 50px 50px;
+	box-shadow: 0px 0px 10px #000;
+	border-style: solid;
+	border-color: #CCCCFF;
+	padding: 3px;
+	padding: 20px;
+	background-color: white;
+}
+
+#lateral {
+	float: left; <!--
+	border: solid;
+	border-color: red; -->
+	padding: 10px;
+}
+
+#principal {
+	float: right;
+	width: 805px; <!--
+	border: solid;
+	border-color: blue;
+	-->
+}
+
+#pie {
+	clear: both;
+	border-top: solid;
+	font-size: x-small;
+	font-family: sans-serif;
+	font-weight: 900;
+}
+
+#presentacion {
+	clear: both;
+	height: 200px;
+	widows: 1050px;
+}
+
+#acceso {
+	font-family: sans-serif;
+	font-weight: 900;
+	font-size: large;
+}
+
+.marca {
+	width: 150px;
+	height: 40px;
+}
+
+.imgp2 {
+	height: 120px;
+	width: 130px;
+	border-radius: 50px 3px 50px 3px;
+	-moz-border-radius: 50px 3px 50px 3px;
+	-webkit-border-radius: 50px 3px 50px 3px;
+	box-shadow: 0px 0px 0px #000;
+}
+
+.imgp {
+	height: 180px;
+	width: 1024px;
+	border-radius: 50px 3px 50px 3px;
+	-moz-border-radius: 50px 3px 50px 3px;
+	-webkit-border-radius: 50px 3px 50px 3px; //
+	box-shadow: 1px 1px 12px #000;
+}
+
+.oculto {
+	width: 0px;
+	height: 0px;
+	opacity: 0.0;
+}
+
+#tab {
+	border-color: transparent;
+	background: transparent;
+}
+
+.pre {
+	margin-left: 60px;
+}
+
+.input {
+	width: 200px;
+}
+
+.input-log {
+	width: 150px;
+}
