@@ -20,15 +20,15 @@ public class Pelicula implements Serializable {
 	@Column(name="pelicula_id")
 	private Long peliculaId;
 
+	private String an;
+
+	private String ruta;
+
 	private String sinopsis;
 
 	private String titulo;
 
-	private String ruta;
-
 	private Long visto;
-
-	private String an;
 
 	//bi-directional many-to-many association to Actor
 	@ManyToMany
@@ -59,6 +59,22 @@ public class Pelicula implements Serializable {
 		this.peliculaId = peliculaId;
 	}
 
+	public String getAn() {
+		return this.an;
+	}
+
+	public void setAn(String an) {
+		this.an = an;
+	}
+
+	public String getRuta() {
+		return this.ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
 	public String getSinopsis() {
 		return this.sinopsis;
 	}
@@ -75,30 +91,12 @@ public class Pelicula implements Serializable {
 		this.titulo = titulo;
 	}
 
-	public String getRuta() {
-		return this.ruta;
-	}
-
-	public void setRuta(String ruta) {
-		this.ruta = ruta;
-	}
-
-	
-
 	public Long getVisto() {
 		return this.visto;
 	}
 
 	public void setVisto(Long visto) {
 		this.visto = visto;
-	}
-
-	public String getAn() {
-		return this.an;
-	}
-
-	public void setAn(String an) {
-		this.an = an;
 	}
 
 	public List<Actor> getActors() {

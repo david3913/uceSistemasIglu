@@ -2,7 +2,6 @@ package com.iglu.spring.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 
@@ -15,8 +14,6 @@ import java.util.List;
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
-	
 	@Id
 	@SequenceGenerator(name="CLIENTE_CLIENTEID_GENERATOR", sequenceName="CLIENTE_CLIENTE_ID_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CLIENTE_CLIENTEID_GENERATOR")
@@ -25,28 +22,17 @@ public class Cliente implements Serializable {
 
 	private String apellidos;
 
-	private String calle1;
-
-	private String calle2;
-
-	private String casa;
-
-	private String celular;
-
 	private String ci;
 
-	private String ciudad;
+	private String direccion;
 
 	private String email;
-
-	@Temporal(TemporalType.DATE)
-	private Date nacimiento;
 
 	private String nombres;
 
 	private String postal;
 
-	private String telefono;
+	private String telefonos;
 
 	//bi-directional many-to-one association to Tarjeta
 	@OneToMany(mappedBy="cliente")
@@ -75,38 +61,6 @@ public class Cliente implements Serializable {
 		this.apellidos = apellidos;
 	}
 
-	public String getCalle1() {
-		return this.calle1;
-	}
-
-	public void setCalle1(String calle1) {
-		this.calle1 = calle1;
-	}
-
-	public String getCalle2() {
-		return this.calle2;
-	}
-
-	public void setCalle2(String calle2) {
-		this.calle2 = calle2;
-	}
-
-	public String getCasa() {
-		return this.casa;
-	}
-
-	public void setCasa(String casa) {
-		this.casa = casa;
-	}
-
-	public String getCelular() {
-		return this.celular;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-
 	public String getCi() {
 		return this.ci;
 	}
@@ -115,12 +69,12 @@ public class Cliente implements Serializable {
 		this.ci = ci;
 	}
 
-	public String getCiudad() {
-		return this.ciudad;
+	public String getDireccion() {
+		return this.direccion;
 	}
 
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	public String getEmail() {
@@ -129,14 +83,6 @@ public class Cliente implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Date getNacimiento() {
-		return this.nacimiento;
-	}
-
-	public void setNacimiento(Date nacimiento) {
-		this.nacimiento = nacimiento;
 	}
 
 	public String getNombres() {
@@ -155,12 +101,12 @@ public class Cliente implements Serializable {
 		this.postal = postal;
 	}
 
-	public String getTelefono() {
-		return this.telefono;
+	public String getTelefonos() {
+		return this.telefonos;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setTelefonos(String telefonos) {
+		this.telefonos = telefonos;
 	}
 
 	public List<Tarjeta> getTarjetas() {
