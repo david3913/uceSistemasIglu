@@ -6,7 +6,7 @@ public class Banco {
 	
 	public boolean simNumTrajeta(){
 		Double aleat=Math.random();
-		if(aleat>0.95){
+		if(true){
 			return true;
 		}
 		else{

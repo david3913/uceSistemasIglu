@@ -30,7 +30,7 @@ public List<String> encontrarPeliculas(String titulo,String genero){
 	 for (Pelicula p: peli) {
 		 String img =p.getRuta()+"/"+p.getRuta()+"_1.jpg";
 		 img=ConfigApp.getBaseServer()+img;
-		System.out.println(img);
+		//System.out.println(img);
 		 String pelicula= "<div class='work'>" + "<div class='peli'>"
 					+ "<a href='visor.xhtml?id="+p.getPeliculaId()+"'>"
 					+ "<img src='"+img

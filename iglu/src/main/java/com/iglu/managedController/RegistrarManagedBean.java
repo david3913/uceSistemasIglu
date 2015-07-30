@@ -58,6 +58,7 @@ public class RegistrarManagedBean {
 			MensajesPF.infoMsj("Registro exitoso_Favor revise su correo electrónico para la confirmacion");
 			Email email = new Email(cliente.getEmail(), "Registro exitoso",
 					"Ahora puede acceder a nuestros servicios con la contraseña" + aux);
+			System.out.println("PASS>>: "+aux);
 			email.sendMail();
 		} catch (Exception ex) {
 			MensajesPF.errorMsj("Error_Revise los datos, si el error persiste contactese a la empresa");
