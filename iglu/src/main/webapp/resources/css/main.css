@@ -316,6 +316,8 @@ background: white;
     width: auto;
     height: auto;
     margin-bottom: 5px;
+    border:solid;
+    color:red;
 
 }
 
@@ -567,7 +569,8 @@ background: white;
     width: auto;
     height: auto;
     margin-bottom: 5px;
-    font-size-adjust: inherit;
+    max-width:100px;
+    color:blue;
 
 }
 	
@@ -646,11 +649,14 @@ background: white;
 @media (max-width:550px){
      .main .work{
         width: 100%;
+        max-width: 100px;
     }
     .main .work .tit {
     color: #4b4848;
     font-family: "raleway-regular", arial;
     font-size: 10px;
+     max-width:50px;
+     color: green;
    
 }
 }
