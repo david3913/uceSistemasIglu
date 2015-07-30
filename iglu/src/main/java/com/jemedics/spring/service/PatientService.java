@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jemedics.spring.dao.PatientDAO;
-import com.jemedics.spring.dao.StudyDAO;
 import com.jemedics.spring.model.Patient;
 
 /**

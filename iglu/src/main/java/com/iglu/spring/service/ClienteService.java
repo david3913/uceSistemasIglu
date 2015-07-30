@@ -5,11 +5,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iglu.security.PassEncode;
+import com.iglu.simulations.Banco;
 import com.iglu.spring.dao.AuthorityDAO;
 import com.iglu.spring.dao.ClienteDAO;
 import com.iglu.spring.dao.UserDAO;
 import com.iglu.spring.model.Authority;
 import com.iglu.spring.model.Cliente;
+import com.iglu.spring.model.Tarjeta;
 import com.iglu.spring.model.User;
 import com.iglu.util.Password;
 
@@ -27,11 +29,19 @@ public class ClienteService {
 
 	@Autowired
 	AuthorityDAO authorityDAO;
+	
+	@Autowired
+	
 
 	// recupera lista de de peliculas y las trasnforma a un string html5
 
 	@Transactional(readOnly = false)
-	public String suscribir(Cliente cliente) {		
+	public String suscribir(Cliente cliente,Tarjeta tarjeta) {	
+		Banco bank= new Banco();
+		
+		
+		if(bank.simNumTrajeta()){
+		
 		User u = new User();
 		PassEncode xx=new PassEncode();
 		String yy=Password.genPass();
@@ -45,9 +55,12 @@ public class ClienteService {
 		au.setAuthority("cliente");
 		au.setUser(u);
 		getClienteDAO().insertCliente(cliente);
+		
 		getUserDAO().insertUser(u) ;
 		getAuthorityDAO().insertAuthority(au);
-		return yy;
+		return yy;}
+		else{
+		return "";}
 	}
 	
 	@Transactional(readOnly = false)

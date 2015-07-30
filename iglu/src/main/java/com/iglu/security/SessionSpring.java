@@ -3,8 +3,6 @@ package com.iglu.security;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import sun.security.util.ObjectIdentifier;
-
 public class SessionSpring {
 
 	private static String username;

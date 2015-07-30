@@ -4,14 +4,14 @@ public class Banco {
 
 	
 	
-	public void simNumTrajeta(){
+	public boolean simNumTrajeta(){
 		Double aleat=Math.random();
 		if(aleat>0.95){
-			///se verifica la tarjeta
+			return true;
 		}
 		else{
 			
-			// la tarjeta no es valida
+			return false;
 			
 		}
 		

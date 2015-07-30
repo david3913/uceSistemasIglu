@@ -2,11 +2,9 @@ package com.iglu.managedController;
 
 import java.util.Date;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 import com.iglu.spring.model.Cliente;
 import com.iglu.spring.model.Tarjeta;
@@ -50,17 +48,17 @@ public class RegistrarManagedBean {
 		cliente.setTelefonos(telefonos);
 		cliente.setDireccion(direccion);
 		cliente.setPostal(codPostal);
-
-		// tarjeta.setNumero(numero);
-		// tarjeta.setTipo(tipTar);
-		// tarjeta.setCaducidad(caducidad);
+		tarjeta = new Tarjeta();
+		tarjeta.setNumero(numero);
+		tarjeta.setTipo(tipTar);
+		tarjeta.setCaducidad(caducidad);
 
 		try {
-			String aux=clienteService.suscribir(cliente);
+			String aux = clienteService.suscribir(cliente,tarjeta);
 			MensajesPF.infoMsj("Registro exitoso_Favor revise su correo electrónico para la confirmacion");
-			Email email= new Email(cliente.getEmail(), "Registro exitoso", 
-					"Ahora puede acceder a nuestros servicios con la contraseña"+aux);
-			 email.sendMail();
+			Email email = new Email(cliente.getEmail(), "Registro exitoso",
+					"Ahora puede acceder a nuestros servicios con la contraseña" + aux);
+			email.sendMail();
 		} catch (Exception ex) {
 			MensajesPF.errorMsj("Error_Revise los datos, si el error persiste contactese a la empresa");
 			System.out.println(ex);

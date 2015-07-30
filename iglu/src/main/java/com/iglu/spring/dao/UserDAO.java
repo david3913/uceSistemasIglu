@@ -4,8 +4,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.iglu.spring.model.Cliente;
-import com.iglu.spring.model.Pelicula;
 import com.iglu.spring.model.User;
 
 @Repository

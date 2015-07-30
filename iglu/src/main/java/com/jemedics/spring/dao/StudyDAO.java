@@ -3,7 +3,6 @@ package com.jemedics.spring.dao;
 import java.sql.Timestamp;
 import java.util.List;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

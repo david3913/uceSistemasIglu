@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.iglu.spring.dao.PelisListDAO;
 import com.iglu.spring.model.Pelicula;
-import com.iglu.spring.model.User;
 
 ///Logica del negocio
 

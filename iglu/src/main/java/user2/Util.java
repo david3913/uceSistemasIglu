@@ -1,21 +1,11 @@
 package user2;
  
 import java.io.IOException;
- 
-
-
-
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
-
-
-
-
-
 
 import org.apache.log4j.Logger;
 import org.springframework.security.web.util.ELRequestMatcher;

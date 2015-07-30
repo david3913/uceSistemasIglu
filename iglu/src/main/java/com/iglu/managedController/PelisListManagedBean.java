@@ -9,7 +9,6 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import com.iglu.spring.model.Genero;
-import com.iglu.spring.model.Pelicula;
 import com.iglu.spring.service.PelisListService;
 
 //Bean facilita la captura y tranmisin de datos
