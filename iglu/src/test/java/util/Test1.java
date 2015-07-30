@@ -1,5 +1,8 @@
 package util;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import com.iglu.util.Email;
 
 public class Test1 {
@@ -10,6 +13,17 @@ public class Test1 {
 
 
 	public static void main(String[] args) {
+		
+//		try {
+//			System.out.println(InetAddress.getLocalHost().getHostAddress());
+//			System.out.println(InetAddress.getLocalHost().getHostName());
+//		} catch (UnknownHostException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		 
+
 //		 Email enviar = new Email("miempresa123@hotmail.com", "daxer123",
 //				 "a_david55@hotmail.com", "IGLU - Registro", "Su usuario es: ");
 //		 enviar.sendMail();

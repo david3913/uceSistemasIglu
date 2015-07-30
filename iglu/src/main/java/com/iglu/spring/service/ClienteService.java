@@ -30,7 +30,7 @@ public class ClienteService {
 	@Autowired
 	AuthorityDAO authorityDAO;
 	
-	@Autowired
+	
 	
 
 	// recupera lista de de peliculas y las trasnforma a un string html5

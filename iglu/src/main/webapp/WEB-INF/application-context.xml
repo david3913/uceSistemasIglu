@@ -112,7 +112,7 @@
 
 
 <bean id="configApp" class="com.iglu.util.config.ConfigApp">
-<property name="baseServer" value="${server.path0}"></property>
+<property name="baseServer" value="${server.data}"></property>
 </bean>
 
 </beans>

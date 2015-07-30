@@ -38,7 +38,7 @@ public List<String> encontrarPeliculas(String titulo,String genero){
 					+ "<div class='caption'>" + "<div class='work_title'>" + "<h1>"
 					+  p.getAn()+  "</h1>" + "</div></div></a></div>"
 					+ "<div class='tit'>"+p.getTitulo()
-					+ "<br />"
+					
 					+ "</div></div>";
 		 peliculasList.add(pelicula);
 	}

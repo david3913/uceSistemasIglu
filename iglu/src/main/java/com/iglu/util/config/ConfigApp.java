@@ -1,6 +1,8 @@
 package com.iglu.util.config;
 
 import java.io.Serializable;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -17,7 +19,16 @@ public class ConfigApp implements Serializable {
 	}
 
 	public static void setBaseServer(String baseServer) {
-		ConfigApp.baseServer = baseServer;
+						try {
+					ConfigApp.baseServer="http://"+InetAddress.getLocalHost().getHostAddress()+baseServer;
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					ConfigApp.baseServer="http://localhost"+baseServer;
+					e.printStackTrace();
+				}
+			
+						
+	
 	}
 	
 	////correo de la empresa y su contraseña...
