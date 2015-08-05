@@ -12,6 +12,7 @@ import com.iglu.security.PassEncode;
 import com.iglu.simulations.Banco;
 import com.iglu.spring.dao.AuthorityDAO;
 import com.iglu.spring.dao.ClienteDAO;
+import com.iglu.spring.dao.TarjetaDAO;
 import com.iglu.spring.dao.UserDAO;
 import com.iglu.spring.model.Authority;
 import com.iglu.spring.model.Cliente;
@@ -34,6 +35,9 @@ public class ClienteService {
 
 	@Autowired
 	AuthorityDAO authorityDAO;
+	
+	@Autowired
+	TarjetaDAO tarjetaDAO;
 
 	// recupera lista de de peliculas y las trasnforma a un string html5
 
