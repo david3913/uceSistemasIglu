@@ -102,7 +102,7 @@ public class Email {
 
 	}
 
-	public void sendMail()   {
+	public void sendMail() throws MessagingException   {
 		
 		BodyPart cuerpo = new MimeBodyPart();
 		BodyPart adjunto = new MimeBodyPart();
@@ -111,7 +111,7 @@ public class Email {
 		mensaje += "<br/><br/>NOTA:<br/>ESTE MENSAJE SE GENERA DE MANERA AUTOMÁTICA\nFAVOR NO RESPONDER - GRACIAS";
 		
 			
-			try {
+		
 				cuerpo.setContent(mensaje,"text/html");
 			
 			if (!filePath.equals("")) {
@@ -130,10 +130,7 @@ public class Email {
 			message.setContent(multiParte);
 			Transport.send(message);
 			System.out.println("OK..OK..OK");
-			} catch (MessagingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 
 	
 	}
