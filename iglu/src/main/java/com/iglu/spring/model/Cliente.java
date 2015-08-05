@@ -1,16 +1,8 @@
 package com.iglu.spring.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 
 
 /**
@@ -41,6 +33,14 @@ public class Cliente implements Serializable {
 	private String postal;
 
 	private String telefonos;
+
+	//bi-directional one-to-one association to Cuenta
+	@OneToOne(mappedBy="cliente")
+	private Cuenta cuenta;
+
+	//bi-directional many-to-one association to Suscripcion
+	@OneToMany(mappedBy="cliente")
+	private List<Suscripcion> suscripcions;
 
 	//bi-directional many-to-one association to Tarjeta
 	@OneToMany(mappedBy="cliente")
@@ -115,6 +115,36 @@ public class Cliente implements Serializable {
 
 	public void setTelefonos(String telefonos) {
 		this.telefonos = telefonos;
+	}
+
+	public Cuenta getCuenta() {
+		return this.cuenta;
+	}
+
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	public List<Suscripcion> getSuscripcions() {
+		return this.suscripcions;
+	}
+
+	public void setSuscripcions(List<Suscripcion> suscripcions) {
+		this.suscripcions = suscripcions;
+	}
+
+	public Suscripcion addSuscripcion(Suscripcion suscripcion) {
+		getSuscripcions().add(suscripcion);
+		suscripcion.setCliente(this);
+
+		return suscripcion;
+	}
+
+	public Suscripcion removeSuscripcion(Suscripcion suscripcion) {
+		getSuscripcions().remove(suscripcion);
+		suscripcion.setCliente(null);
+
+		return suscripcion;
 	}
 
 	public List<Tarjeta> getTarjetas() {

@@ -54,7 +54,7 @@ public class RegistrarManagedBean {
 		tarjeta.setCaducidad(caducidad);
 
 		try {
-			String aux = clienteService.suscribir(cliente,tarjeta);
+			clienteService.registrar(cliente,tarjeta);
 			MensajesPF.infoMsj("Registro exitoso_Favor revise su correo electrónico para la confirmacion");
 		
 		} catch (Exception ex) {

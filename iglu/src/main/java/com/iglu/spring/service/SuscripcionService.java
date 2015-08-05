@@ -23,27 +23,19 @@ import com.iglu.util.Password;
 
 ///Logica del negocio
 
-@Service("ClienteService")
+@Service("SuscripcionService")
 @Transactional(readOnly = true)
-public class ClienteService {
+public class SuscripcionService {
 	// @Autowired algun dao se inyecta
 
-	@Autowired
-	ClienteDAO clienteDAO;
-	@Autowired
-	UserDAO userDAO;
-
-	@Autowired
-	AuthorityDAO authorityDAO;
-	
-	@Autowired
-	TarjetaDAO tarjetaDAO;
+	//@Autowired
+	//dao
 
 	// recupera lista de de peliculas y las trasnforma a un string html5
 
 	@Transactional(readOnly = false) /// configurar para q tb realice rollback
 										/// con excepcino de email..
-	public void registrar(Cliente cliente, Tarjeta tarjeta) {
+	public String suscripcionFree(Cliente cliente, Tarjeta tarjeta) {
 		Banco bank = new Banco();
 
 		if (bank.simNumTrajeta()) {
@@ -63,10 +55,10 @@ public class ClienteService {
 			au.setUser(u);
 			tarjeta.setCliente(cliente);
 			
-			getClienteDAO().insertCliente(cliente);
-			getUserDAO().insertUser(u);
-			getAuthorityDAO().insertAuthority(au);
-			getTarjetaDAO().insertUser(tarjeta);
+//			getClienteDAO().insertCliente(cliente);
+//			getUserDAO().insertUser(u);
+//			getAuthorityDAO().insertAuthority(au);
+//			getTarjetaDAO().insertUser(tarjeta);
 			
 			
 			
@@ -90,49 +82,15 @@ public class ClienteService {
 
 			});
 
+			return yy;
+
+		} else {
+			return "";
 		}
 
 	}
 
-	@Transactional(readOnly = false)
-	public void modificarPass(String username, String pass) {
-		User u = getUserDAO().getUser(username);
-		PassEncode xx = new PassEncode();
-		u.setPassword(xx.codificar(pass));
-		getUserDAO().updateUser(u);
+	
 
-	}
-
-	public ClienteDAO getClienteDAO() {
-		return clienteDAO;
-	}
-
-	public void setClienteDAO(ClienteDAO clienteDAO) {
-		this.clienteDAO = clienteDAO;
-	}
-
-	public UserDAO getUserDAO() {
-		return userDAO;
-	}
-
-	public void setUserDAO(UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
-
-	public AuthorityDAO getAuthorityDAO() {
-		return authorityDAO;
-	}
-
-	public void setAuthorityDAO(AuthorityDAO authorityDAO) {
-		this.authorityDAO = authorityDAO;
-	}
-
-	public TarjetaDAO getTarjetaDAO() {
-		return tarjetaDAO;
-	}
-
-	public void setTarjetaDAO(TarjetaDAO tarjetaDAO) {
-		this.tarjetaDAO = tarjetaDAO;
-	}
-
+	
 }

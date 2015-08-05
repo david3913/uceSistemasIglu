@@ -35,6 +35,9 @@ public class Handler extends SimpleUrlAuthenticationSuccessHandler {
 		System.out.println(authentication.getName());
 		System.out.println(authentication.getPrincipal());
 		System.out.println(authentication.getAuthorities());
+		////verificar suscripcion
+		
+		
 		
 		if (Util.isAjaxRequest(request)) {
 			System.out.println("si es peticin ajax");
