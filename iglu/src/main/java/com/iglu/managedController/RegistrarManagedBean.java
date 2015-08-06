@@ -18,7 +18,7 @@ import com.iglu.util.MensajesPF;
 public class RegistrarManagedBean {
 
 	// Inyeccion del servicio
-	@ManagedProperty(value = "#{RegistrarService}")
+	@ManagedProperty(value = "#{ClienteService}")
 	ClienteService registrarService;
 	//
 
