@@ -15,31 +15,22 @@ Visor
 		<f:metadata>
 			<f:viewParam name="id" value="#{visorMB.id}" required="true" />
 			<f:event type="javax.faces.event.PreRenderViewEvent"
-				listener="#{visorMB.postLoad}" />
+				listener="#{visorMB.preLoad}" />
 
 
 		</f:metadata>
 	</ui:define>
 
-	<ui:define name="cssScript">
+		<ui:define name="cssScript">
 		<h:outputStylesheet library="css" name="main.css" />
 		<h:outputStylesheet library="css" name="reset.css" />
+<link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet" />
 
+		<script src="http://vjs.zencdn.net/4.12/video.js"></script>
 		<h:outputScript library="js" name="jquery.js" />
 		<h:outputScript library="js" name="main.js" />
 		
-		
-			<h:outputStylesheet library="video-js" name="video-js.css" />
-
-		<h:outputScript library="video-js" name="video.js" />
-		
-		<link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet" />
-
-		<script src="http://vjs.zencdn.net/4.12/video.js"></script>
-		
-
 	</ui:define>
-
 	<ui:define name="body">
 		<title>VISOR</title>
 
@@ -90,6 +81,7 @@ Visor
 								href="" target="_blank">supports
 								HTML5 video</a>
 						</p>
+						
 					</video>
 
 

@@ -18,8 +18,8 @@ import com.iglu.util.MensajesPF;
 public class RegistrarManagedBean {
 
 	// Inyeccion del servicio
-	@ManagedProperty(value = "#{ClienteService}")
-	ClienteService clienteService;
+	@ManagedProperty(value = "#{RegistrarService}")
+	ClienteService registrarService;
 	//
 
 	// List<Genero> categoriaList ;
@@ -54,7 +54,7 @@ public class RegistrarManagedBean {
 		tarjeta.setCaducidad(caducidad);
 
 		try {
-			clienteService.registrar(cliente,tarjeta);
+			registrarService.registrar(cliente,tarjeta);
 			MensajesPF.infoMsj("Registro exitoso_Favor revise su correo electrónico para la confirmacion");
 		
 		} catch (Exception ex) {
@@ -64,13 +64,7 @@ public class RegistrarManagedBean {
 
 	}
 
-	public ClienteService getClienteService() {
-		return clienteService;
-	}
-
-	public void setClienteService(ClienteService clienteService) {
-		this.clienteService = clienteService;
-	}
+	
 
 	public String getCi() {
 		return ci;
@@ -166,6 +160,18 @@ public class RegistrarManagedBean {
 
 	public void setTarjeta(Tarjeta tarjeta) {
 		this.tarjeta = tarjeta;
+	}
+
+
+
+	public ClienteService getRegistrarService() {
+		return registrarService;
+	}
+
+
+
+	public void setRegistrarService(ClienteService registrarService) {
+		this.registrarService = registrarService;
 	}
 
 }

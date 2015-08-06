@@ -9,9 +9,9 @@ import com.iglu.spring.service.ClienteService;
 import com.iglu.util.MensajesPF;
 
 //Bean facilita la captura y tranmisin de datos
-@ManagedBean(name = "cuentaMB")
+@ManagedBean(name = "userMB")
 @ViewScoped
-public class CuentaManagedBean {
+public class UserManagedBean {
 
 	// Inyeccion del servicio
 	@ManagedProperty(value = "#{ClienteService}")
@@ -30,7 +30,7 @@ public class CuentaManagedBean {
 		}
 		catch(Exception ex){
 			MensajesPF.errorMsj("Error_No se ha podido modificar su contraseña");
-			
+			ex.printStackTrace();
 		}
 		
 	}
@@ -62,6 +62,7 @@ public class CuentaManagedBean {
 	}
 
 	public void setClienteService(ClienteService clienteService) {
+		System.out.println("set cliente service");
 		this.clienteService = clienteService;
 	}
 	

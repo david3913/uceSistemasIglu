@@ -2,6 +2,7 @@ package com.iglu.spring.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 
 
 /**
@@ -18,6 +19,9 @@ public class Cuenta implements Serializable {
 	private Long cuentaId;
 
 	private String ci;
+
+	@Temporal(TemporalType.DATE)
+	private Date creacion;
 
 	private String estado;
 
@@ -48,6 +52,14 @@ public class Cuenta implements Serializable {
 
 	public void setCi(String ci) {
 		this.ci = ci;
+	}
+
+	public Date getCreacion() {
+		return this.creacion;
+	}
+
+	public void setCreacion(Date creacion) {
+		this.creacion = creacion;
 	}
 
 	public String getEstado() {

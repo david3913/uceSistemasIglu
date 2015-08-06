@@ -8,7 +8,7 @@
 	template="/templates/igluTemp2.xhtml">
 
 	<ui:define name="title">
-Cuenta
+user
 </ui:define>
 
 
@@ -27,7 +27,7 @@ Cuenta
 
 		<h:form>
 			<br />
-			<br />
+			<br /> 
 			<br />
 			<p:growl id="growl" sticky="true" showDetail="true" />
 			<div style="width: 90%; margin-left: 5%">
@@ -37,12 +37,12 @@ Cuenta
 						<p:messages id="messages" showDetail="true"  />
     <h:panelGrid columns="2" columnClasses="label, value">                 
         <h:outputLabel for="pwd1" value="Contraseña nueva: *" />
-        <p:password id="pwd1" value="#{cuentaMB.pass1}" match="pwd2" label="Password 1" required="true" />
+        <p:password id="pwd1" value="#{userMB.pass1}" match="pwd2" label="Password 1" required="true" />
  
         <h:outputLabel for="pwd2" value="Repetir contraseña: *" />
-        <p:password id="pwd2" value="#{cuentaMB.pass2}" label="Password 2" required="true" />
-    </h:panelGrid>
-    <p:commandButton actionListener="#{cuentaMB.modificarPass}" update="messages" value="Save" />
+        <p:password id="pwd2" value="#{userMB.pass2}" label="Password 2" required="true" />
+    </h:panelGrid> 
+    <p:commandButton actionListener="#{userMB.modificarPass}" update="messages" value="Save" />
 					</p:tab>
 					 <p:tab title="Info. Suscripcion">
 						<h:panelGrid columns="2" cellpadding="10">
@@ -61,7 +61,7 @@ Cuenta
 
 			</div>
 			
-			<p:commandButton actionListener="#{cuentaMB.cuenta}"></p:commandButton>
+		
 		</h:form>
 
 

@@ -30,7 +30,7 @@ public class VisorManagedBean {
 	private String foto;
 	private long id;
 
-	public void postLoad(ComponentSystemEvent event) {
+	public void preLoad(ComponentSystemEvent event) {
 		// consultar en la base la url de la peli para rerpoducir..
 		pelicula=visorService.peli(id);
 		 rutaPeli =ConfigApp.getBaseServer()+pelicula.getRuta()+"/"+pelicula.getRuta()+".mp4";

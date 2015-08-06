@@ -27,6 +27,7 @@
 
 	<context:annotation-config />
 	<context:spring-configured />
+	
 
 <bean id="dataSource" destroy-method="close"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">

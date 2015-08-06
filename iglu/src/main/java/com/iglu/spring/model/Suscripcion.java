@@ -27,7 +27,7 @@ public class Suscripcion implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date inicio;
 
-	private Object tipo;
+	private String tipo;
 
 	//bi-directional many-to-one association to Cuenta
 	@OneToMany(mappedBy="suscripcion")
@@ -65,11 +65,11 @@ public class Suscripcion implements Serializable {
 		this.inicio = inicio;
 	}
 
-	public Object getTipo() {
+	public String getTipo() {
 		return this.tipo;
 	}
 
-	public void setTipo(Object tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 
