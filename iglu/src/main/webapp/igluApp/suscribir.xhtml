@@ -22,10 +22,12 @@ Suscribirse
 
 	<ui:define name="body">
 
-		<h:form>
-			<br />
-			<br />
-			<br />
+			<p:growl id="growl"  showDetail="true" sticky="true" /> 
+
+		<form jsf:id="form" method="post">
+
+
+			<br /> <br /> <br />
 			<p:growl id="growl" sticky="true" showDetail="true" />
 			<div style="width: 90%; margin-left: 5%">
 				<p:wizard>
@@ -153,7 +155,7 @@ Suscribirse
 					</p:tab>-->
 				</p:wizard> 
 			</div>
-		</h:form>
+		</form>
 
 
 	</ui:define>
