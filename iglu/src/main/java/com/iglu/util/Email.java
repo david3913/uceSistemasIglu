@@ -16,6 +16,8 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import com.iglu.util.config.ConfigApp;
+
 
 
 public class Email {
@@ -66,8 +68,8 @@ public class Email {
 	
 	public  Email( String destino, String asunto,
 			String mensaje) {
-		this.origen = "miempresa123@hotmail.com";
-		this.passwd = "daxer123";
+		this.origen = ConfigApp.getEmailOrigen();
+		this.passwd = ConfigApp.getEmailPass();
 		this.destino = destino;
 		this.asunto = asunto;
 		this.mensaje = mensaje;
@@ -82,10 +84,10 @@ public class Email {
 //		props.setProperty("mail.smtp.auth", "true");
 //		props.setProperty("mail.smtp.port", "587");
 		
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "smtp.live.com");
-		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.auth", ConfigApp.isMailSmtpAuth());
+		props.put("mail.smtp.starttls.enable", ConfigApp.isMailSmtpStarttlsEenable());
+		props.put("mail.smtp.host", ConfigApp.getMailSmtpHost());
+		props.put("mail.smtp.port", ConfigApp.getMailSmtpPort());
 
 		Session session = Session.getDefaultInstance(props,
 				new javax.mail.Authenticator() {

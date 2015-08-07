@@ -26,6 +26,9 @@ import com.iglu.spring.model.Tarjeta;
 import com.iglu.spring.model.User;
 import com.iglu.util.Email;
 import com.iglu.util.Password;
+import com.iglu.util.config.ConfigApp;
+
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
 
 ///Logica del negocio
 
@@ -84,28 +87,29 @@ public class RegistrarService {
 			cuenta.setCi(cliente.getCi());
 			cuenta.setCreacion(new Date());
 			getCuentaDAO().insertCuenta(cuenta);
+			if (ConfigApp.isEmailEstado()) {
+				TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
 
-			TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+					public void afterCommit() throws RuntimeException {
 
-				public void afterCommit() throws RuntimeException {
-				
-					// TODO Auto-generated method stub
-					/// lanzar excepcion de email
-					try {
-						Email email = new Email(cliente.getEmail(), "Registro exitoso",
-								"Ahora puede acceder a nuestros servicios con la contraseña: " + yy);
-						email.sendMail();
-					} catch (MessagingException e) {
+						// TODO Auto-generated method stub
+						/// lanzar excepcion de email
+						try {
+							Email email = new Email(cliente.getEmail(), "Registro exitoso",
+									"Ahora puede acceder a nuestros servicios con la contraseña: " + yy);
+							email.sendMail();
+						} catch (MessagingException e) {
 
-						deleteCliente(cliente.getClienteId());
+							deleteCliente(cliente.getClienteId());
 
-						throw new RuntimeException("Error al enviar email" + cliente.getEmail(), e.getCause());
+							throw new RuntimeException("Error al enviar email" + cliente.getEmail(), e.getCause());
+						}
+
 					}
 
-				}
+				});
 
-			});
-
+			}
 		}
 
 	}

@@ -52,25 +52,29 @@ public class VerPelicula implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		CuentaService cuentaSuscripcionService = ApplicationContextProvider.getContext().getBean(CuentaService.class);
-
+		boolean resp;
 		try {
-			boolean resp = cuentaSuscripcionService.suscripcionActiva();
+			 resp = cuentaSuscripcionService.suscripcionActiva();
 			// System.out.println(resp);
-
+		} catch (Exception ex) {
+			resp=false;
+		}
 			String url = ((HttpServletRequest) request).getRequestURL().toString();
 
-			if (url.contains("jpg"))
+			if (url.contains("jpg")){
 				chain.doFilter(request, response);
-
+			//System.out.println("Recurso jpg");
+			}
 			else {
-				if (url.contains("mp4") && resp)
+				if (url.contains("mp4") && resp){
 					chain.doFilter(request, response);
+				//	System.out.println("Recurso mp4");	
+				}
 				else
 					res.sendRedirect(req.getContextPath() + "/data/mensajes/sinSuscripcion.mp4");
 			}
 
-		} catch (Exception ex) {
-		}
+		
 	}
 
 	/**

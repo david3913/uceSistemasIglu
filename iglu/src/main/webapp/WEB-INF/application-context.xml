@@ -19,6 +19,7 @@
 			<list>
 				<value>/WEB-INF/config/server.properties</value>
 				<value>/WEB-INF/config/database.properties</value>
+					<value>/WEB-INF/config/email.properties</value>
 			</list>
 		</property>
 
@@ -114,6 +115,14 @@
 
 <bean id="configApp" class="com.iglu.util.config.ConfigApp">
 <property name="baseServer" value="${server.data}"></property>
+<property name="emailEstado" value="${email.estado}"></property>
+<property name="emailOrigen" value="${email.origen}"></property>
+<property name="emailPass" value="${email.pass}"></property>
+<property name="mailSmtpAuth" value="${email.smtp.auth}"></property>
+<property name="mailSmtpStarttlsEenable" value="${email.smtp.starttls.enable}"></property>
+<property name="mailSmtpHost" value="${email.smtp.host}"></property>
+<property name="mailSmtpPort" value="${email.smtp.port}"></property>
+
 </bean>
 
 
