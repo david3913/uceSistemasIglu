@@ -19,9 +19,9 @@
 
 		<access-denied-handler error-page="/403.html" />
 		<intercept-url pattern="/data/movies/**" access="hasRole('cliente')" />
-	
+
 		<intercept-url pattern="/igluApp/**" access="hasRole('cliente')" />
- 
+
 		<session-management invalid-session-url="/login.xhtml">
 			<concurrency-control max-sessions="1" />
 
@@ -34,7 +34,7 @@
 
 		<logout invalidate-session="true"
 			delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE"
-			logout-success-url="/login.xhtml"></logout>
+			logout-success-url="/home.xhtml"></logout>
 	</sec:http>
 
 	<authentication-manager>

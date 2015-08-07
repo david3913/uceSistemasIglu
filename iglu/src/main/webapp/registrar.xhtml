@@ -79,8 +79,8 @@ Registrar
 								<h:selectOneMenu id="tipoTarjeta" value="#{registrarMB.tipTar}"
 									style="width:125px">
 									<f:selectItem itemLabel="Visa" itemValue="Visa" />
-									<f:selectItem itemLabel="Amreican Espress"
-										itemValue="Amreican Espress" />
+									<f:selectItem itemLabel="American Express"
+										itemValue="American Express" />
 									<f:selectItem itemLabel="Master Card" itemValue="Master Card" />
 
 								</h:selectOneMenu>
@@ -90,7 +90,7 @@ Registrar
 									<f:validateLength minimum="13" maximum="13" />
 									<f:validateRegex pattern="^[0-9]+$" />
 								</p:inputText>
-								<h:outputText value="fecha:*" />
+								<h:outputText value="Fecha de caducidad:*" />
 								<p:calendar id="mask" value="#{registrarMB.caducidad}"
 									pattern="dd-MM-yyyy" navigator="true" mode="inline" mask="true" />
 								<!-- 	<h:outputText value="Fecha de caducidad" />
@@ -166,19 +166,19 @@ Registrar
 									<h:outputText />
 									<h:outputText />
 
-									<h:outputText value="Tarjeta " />
+									<h:outputText value="Tarjeta:" />
 									<h:outputText value="#{registrarMB.tipTar}"
 										styleClass="outputLabel" />
 									<h:outputText />
 									<h:outputText />
 
-									<h:outputText value="N° tarjeta de crédito " />
+									<h:outputText value="N° tarjeta de crédito:" />
 									<h:outputText value="#{registrarMB.numero}"
 										styleClass="outputLabel" />
 									<h:outputText />
 									<h:outputText />
 
-									<h:outputText value="caducidad " />
+									<h:outputText value="Fecha de caducidad:" />
 									<h:outputText value="#{registrarMB.caducidad}"
 										styleClass="outputLabel">
 										<f:convertDateTime pattern="dd-MM-yyyy" />

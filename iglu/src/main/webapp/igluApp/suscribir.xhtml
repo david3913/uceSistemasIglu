@@ -1,4 +1,4 @@
-<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -6,8 +6,8 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/templates/igluTemp2.xhtml">
-	
-		<ui:define name="title">
+
+	<ui:define name="title">
 Suscribirse
 </ui:define>
 
@@ -19,58 +19,44 @@ Suscribirse
 		<h:outputScript library="js" name="jquery.js" />
 		<h:outputScript library="js" name="main.js" />
 	</ui:define>
-  
+
 	<ui:define name="body">
 
-			<h:form>
+		<h:form>
 			<br />
 			<br />
 			<br />
 			<p:growl id="growl" sticky="true" showDetail="true" />
 			<div style="width: 90%; margin-left: 5%">
-				<p:wizard flowListener="#{userWizard.onFlowProcess}">
+				<p:wizard>
 					<p:tab id="personal" title="Suscripción">
 						<p:panel header="Datos de suscripción">
 							<p:messages />
 							<h:panelGrid columns="2" columnClasses="label, value">
-								<h:outputText value="Meses a contratar: " />
-								<p:inputText value="#{userWizard.user.firstname}" />
+								<h:outputLabel value="Usuario" styleClass="outputLabel"></h:outputLabel>
 
-								<h:outputText value="Nombres: *" />
-								<p:inputText value="#{userWizard.user.firstname}"
-									disabled="true" />
+								<h:outputLabel value="#{suscribirMB.username}"
+									styleClass="outputLabel"></h:outputLabel>
 
-								<h:outputText value="Apellidos: *" />
-								<p:inputText value="#{userWizard.user.lastname}" disabled="true" />
-
-								<h:outputText value="Valor a se cobrado" />
-								<p:inputText value="#{userWizard.user.firstname}"
-									disabled="true" />
-
-								<h:outputText value="Fecha de vencimiento" />
-								<p:inputText value="#{userWizard.user.firstname}"
-									disabled="true" />
-
-								
-
-							</h:panelGrid>
-						</p:panel>
-					</p:tab>
-
-					<p:tab id="credit" title="Tarjeta">
-						<p:panel header="Información tarjeta de crédito">
-							<h:panelGrid columns="2" columnClasses="label, value">
 								<h:outputText value="Número de tarjeta: " />
-								<p:inputText value="#{userWizard.user.phone}" />
+								<h:outputLabel value="#{suscribirMB.numTarjeta}"
+									styleClass="outputLabel"></h:outputLabel>
 
-								<h:outputText value="Codigo de Seguridad: " />
-								<p:inputText value="#{userWizard.user.phone}" />
 
-								<h:outputText value="Fecha de caducidad" />
-								<p:inputText value="#{userWizard.user.phone}" />
+								<p:spacer />
+								<p:spacer />
 
-								<h:outputText value="Número de meses a diferir" />
-								<p:inputText value="#{userWizard.user.phone}" />
+								<h:outputText value="Meses a contratar: " />
+								<h:selectOneMenu id="tipoTarjeta" value="#{suscribirMB.meses}"
+									style="width:125px">
+									<f:selectItem itemLabel="1 Mes" itemValue="1" />
+									<f:selectItem itemLabel="3 Meses" itemValue="3" />
+									<f:selectItem itemLabel="6 Meses" itemValue="6" />
+									<f:selectItem itemLabel="9 Meses" itemValue="9" />
+									<f:selectItem itemLabel="12 Meses" itemValue="12" />
+								</h:selectOneMenu>
+
+
 
 							</h:panelGrid>
 						</p:panel>
@@ -79,7 +65,39 @@ Suscribirse
 
 					<p:tab id="confirm" title="Confirmación">
 						<p:panel header="Confirmación">
-						<p:commandButton value="Generar código de seguridad"></p:commandButton>
+		<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputLabel value="Usuario" styleClass="outputLabel"></h:outputLabel>
+
+							<h:outputLabel value="#{suscribirMB.username}"
+								styleClass="outputLabel"></h:outputLabel>
+
+							<h:outputText value="Número de tarjeta: " />
+							<h:outputLabel value="#{suscribirMB.numTarjeta}"
+								styleClass="outputLabel"></h:outputLabel>
+								
+								<h:outputText value="Número de meses: " />
+							<h:outputLabel value="#{suscribirMB.meses}"
+								styleClass="outputLabel"></h:outputLabel>
+
+
+
+<h:outputText value="Total Precio: " />
+							<h:outputLabel value="#{suscribirMB.total}"
+								styleClass="outputLabel"></h:outputLabel>
+							</h:panelGrid>
+
+
+
+							<p:commandButton value="Suscribir"
+								actionListener="#{suscribirMB.suscribir}" update="growl"
+								process="@this" />
+						</p:panel>
+					</p:tab>
+					<!-- 
+
+					<p:tab id="confirm" title="Confirmación">
+						<p:panel header="Confirmación">
+							<p:commandButton value="Generar código de seguridad"></p:commandButton>
 							<h:panelGrid id="confirmation" columns="3"
 								columnClasses="grid,grid,grid">
 								<h:panelGrid columns="2" columnClasses="label, value">
@@ -132,8 +150,8 @@ Suscribirse
 								actionListener="#{userWizard.save}" update="growl"
 								process="@this" />
 						</p:panel>
-					</p:tab>
-				</p:wizard>
+					</p:tab>-->
+				</p:wizard> 
 			</div>
 		</h:form>
 
