@@ -5,6 +5,7 @@
  */
 
 var neonLogin = neonLogin || {};
+var baseUrl= window.location.hostname;
 
 ;(function($, window, undefined)
 {
@@ -63,7 +64,7 @@ var neonLogin = neonLogin || {};
 					
 					$.ajax({
 						 
-						url: 'http://localhost:8080/iglu/j_spring_security_check', 
+						url: 'http://'+baseUrl+':8080/iglu/j_spring_security_check', 
 						method: 'POST',
 						dataType: 'json',
 						data: {

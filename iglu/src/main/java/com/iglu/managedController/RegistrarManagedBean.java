@@ -8,7 +8,7 @@ import javax.faces.bean.ViewScoped;
 
 import com.iglu.spring.model.Cliente;
 import com.iglu.spring.model.Tarjeta;
-import com.iglu.spring.service.ClienteService;
+import com.iglu.spring.service.RegistrarService;
 import com.iglu.util.Email;
 import com.iglu.util.MensajesPF;
 
@@ -18,8 +18,8 @@ import com.iglu.util.MensajesPF;
 public class RegistrarManagedBean {
 
 	// Inyeccion del servicio
-	@ManagedProperty(value = "#{ClienteService}")
-	ClienteService registrarService;
+	@ManagedProperty(value = "#{RegistrarService}")
+	RegistrarService registrarService;
 	//
 
 	// List<Genero> categoriaList ;
@@ -164,13 +164,13 @@ public class RegistrarManagedBean {
 
 
 
-	public ClienteService getRegistrarService() {
+	public RegistrarService getRegistrarService() {
 		return registrarService;
 	}
 
 
 
-	public void setRegistrarService(ClienteService registrarService) {
+	public void setRegistrarService(RegistrarService registrarService) {
 		this.registrarService = registrarService;
 	}
 

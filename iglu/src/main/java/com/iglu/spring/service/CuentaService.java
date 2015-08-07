@@ -7,19 +7,21 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.iglu.security.PassEncode;
 import com.iglu.security.SessionSpring;
 import com.iglu.spring.dao.CuentaDAO;
 import com.iglu.spring.dao.SuscripcionDAO;
 import com.iglu.spring.dao.UserDAO;
 import com.iglu.spring.model.Cuenta;
 import com.iglu.spring.model.Suscripcion;
+import com.iglu.spring.model.User;
 
 ///Logica del negocio
 
-@Service("CuentaSuscripcionService")
+@Service("CuentaService")
 
 @Transactional(readOnly = true)
-public class CuentaSuscripcionService {
+public class CuentaService {
 	@Autowired
 	SuscripcionDAO suscripcionDAO;
 
@@ -75,7 +77,7 @@ public class CuentaSuscripcionService {
 		Suscripcion suscripcion = getUserDAO().getUser(SessionSpring.getUsername()).getCliente().getCuenta()
 				.getSuscripcion();
 		if (suscripcion.getFin().before(Calendar.getInstance().getTime())) {
-			System.out.println("suscripcion caducada");
+			//System.out.println("suscripcion caducada");
 			return false;
 		} else {
 			return true;
@@ -83,11 +85,24 @@ public class CuentaSuscripcionService {
 
 	}
 
+	@Transactional(readOnly = false)
+	public void modificarPass(String username, String pass) {
+		User u = getUserDAO().getUser(username);
+		PassEncode xx = new PassEncode();
+		u.setPassword(xx.codificar(pass));
+		getUserDAO().updateUser(u);
+
+	}
+	
 	public Cuenta estadoCuenta() {
-		System.out.println("nocc "+SessionSpring.getUsername());
-		getUserDAO().getUser(SessionSpring.getUsername());
+		
 		return getUserDAO().getUser(SessionSpring.getUsername()).getCliente().getCuenta();
 
+	}
+	
+	public Suscripcion infoSuscripcion(){
+		return getUserDAO().getUser(SessionSpring.getUsername()).getCliente().getCuenta().getSuscripcion();
+		
 	}
 
 	public SuscripcionDAO getSuscripcionDAO() {

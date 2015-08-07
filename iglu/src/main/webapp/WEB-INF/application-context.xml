@@ -57,7 +57,7 @@
 		<property name="hibernateProperties">
 			<props>
 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
 				<prop key="hibernate.format_sql">false</prop>
 				<prop key="hibernate.use_sql_comments">false</prop>
@@ -115,6 +115,9 @@
 <bean id="configApp" class="com.iglu.util.config.ConfigApp">
 <property name="baseServer" value="${server.data}"></property>
 </bean>
+
+
+
 
 </beans>
 

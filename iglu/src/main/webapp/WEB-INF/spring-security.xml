@@ -6,7 +6,7 @@
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security.xsd">
- 
+
 	<sec:http auto-config="false" use-expressions="true">
 
 		<headers>
@@ -17,26 +17,20 @@
 			<xss-protection />
 		</headers>
 
-		<access-denied-handler error-page="/403.html?faces-redirect=true" />
-	
+		<access-denied-handler error-page="/403.html" />
+		<intercept-url pattern="/data/movies/**" access="hasRole('cliente')" />
+		<intercept-url pattern="/igluApp/**" access="hasRole('cliente')" />
 
-	<!--  <intercept-url pattern="/**/home.xhtml" access="hasRole('u1')"  />
-	 	 <intercept-url pattern="/**/visor.xhtml" access="hasRole('u2')"  />
-	 	 	 <intercept-url pattern="/**/pelisList.xhtml" access="hasRole('u3')"  />
-	 	 	 	 <intercept-url pattern="/igluApp/*" access="permitAll"  /> -->
-		<intercept-url pattern="/**" access="permitAll" />
-		
 		<session-management invalid-session-url="/login.xhtml">
 			<concurrency-control max-sessions="1" />
 
 		</session-management>
-		<form-login login-page="/login.xhtml"
-		 login-processing-url = "/j_spring_security_check"  
-		password-parameter="password"
-		username-parameter="username" 
-		authentication-success-handler-ref="handler"/>
-			
-			
+
+		<form-login login-page="/login.xhtml" login-processing-url="/j_spring_security_check"
+			password-parameter="password" username-parameter="username"
+			authentication-success-handler-ref="handler" />
+
+
 		<logout invalidate-session="true"
 			delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE"
 			logout-success-url="/login.xhtml"></logout>
@@ -44,20 +38,20 @@
 
 	<authentication-manager>
 		<authentication-provider>
-		<!--  <password-encoder hash="bcrypt" /> -->
+			<password-encoder hash="bcrypt" />
 			<jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query="select username,password,enabled from users where username=?"
 				authorities-by-username-query="select username, authority from authorities where username =?  " />
-				   
+
 		</authentication-provider>
 	</authentication-manager>
-	
-<beans:bean id="handler" class="com.iglu.security.Handler">
-		<beans:constructor-arg value="/login.xhtml" />
+
+	<beans:bean id="handler" class="com.iglu.security.Handler">
+
 	</beans:bean>
-	
-	
-	
+
+
+
 
 
 </beans:beans>

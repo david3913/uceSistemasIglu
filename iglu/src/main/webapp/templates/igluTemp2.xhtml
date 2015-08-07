@@ -57,10 +57,15 @@
 <body jsf:id="body">
 
 
-	<header>
+	<header> 
+	
 		<div class="logo">
-			<a href="index.html"><img src="../resources/img/1.jpg" title="Magnetic"
-				alt="Magnetic" style="height: 50px; width: 100px;" /></a>
+		<div>
+		<h:outputLabel value="Usuario"  styleClass="outputLabel"></h:outputLabel>
+		<br/>
+		<h:outputLabel value="#{sessionSpring.getUsername()}"  styleClass="outputLabel"></h:outputLabel> </div>
+		<br/>	<a href="home.xhtml"><img src="../resources/img/1.jpg" title="Magnetic"
+				alt="Magnetic" style="height: 50px; width: 100px; " /></a>
 		</div>
 		<!-- end logo -->
 

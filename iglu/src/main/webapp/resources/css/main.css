@@ -313,11 +313,12 @@ h5, h6          { font-weight: bolder }
 .main .work .tit {
 text-align: center;
 background: white;
-    width: auto;
+    width: inherit;
     height: auto;
+    text-align:center;
     margin-bottom: 5px;
-    border:solid;
-    color:red;
+    /*border:solid;
+    color:red;*/
 
 }
 
@@ -344,6 +345,7 @@ background: white;
 
 
 .work   .caption .work_title{
+	
     display: block;
     width: 100%;
     position: absolute;
@@ -566,11 +568,13 @@ background: white;
 	.main .work .tit {
 text-align: center;
 background: white;
-    width: auto;
+    width: inherit;
     height: auto;
+    text-align:center;
     margin-bottom: 5px;
-    max-width:100px;
-    color:blue;
+    /* border:solid;
+   color:blue;*/
+  
 
 }
 	
@@ -652,11 +656,15 @@ background: white;
         max-width: 100px;
     }
     .main .work .tit {
-    color: #4b4848;
-    font-family: "raleway-regular", arial;
+    text-align: center;
+background: white;
+    width: inherit;
+    height: auto;
+    text-align:center;
+    margin-bottom: 5px;
+   /*  border:solid;
+  color:green;*/
     font-size: 10px;
-     max-width:50px;
-     color: green;
    
 }
 }

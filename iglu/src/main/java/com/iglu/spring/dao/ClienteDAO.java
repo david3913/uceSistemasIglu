@@ -19,6 +19,13 @@ public class ClienteDAO {
 	
 			}
 	
+public void deleteCliente(Long id){
+		
+	
+		getSessionFactory().getCurrentSession().createQuery("delete from Cliente cascade where cliente_id=?").setParameter(0, id).executeUpdate();
+		
+			}
+	
 	
 	
 	public SessionFactory getSessionFactory() {

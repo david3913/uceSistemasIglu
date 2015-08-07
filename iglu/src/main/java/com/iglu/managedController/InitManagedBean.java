@@ -13,7 +13,7 @@ import javax.faces.event.ComponentSystemEvent;
 
 import com.iglu.security.SessionSpring;
 import com.iglu.spring.model.Cuenta;
-import com.iglu.spring.service.CuentaSuscripcionService;
+import com.iglu.spring.service.CuentaService;
 
 //Bean facilita la captura y tranmisin de datos
 @ManagedBean(name = "initMB")
@@ -22,7 +22,7 @@ public class InitManagedBean {
 
 	// Inyeccion del servicio
 	@ManagedProperty(value = "#{CuentaSuscripcionService}")
-	CuentaSuscripcionService cuentaSuscripcionService;
+	CuentaService cuentaSuscripcionService;
 
 	public void info(){
 		
@@ -46,7 +46,7 @@ sessionMap = extCtx.getSessionMap();
 		// FacesContext.getCurrentInstance().getExternalContext().getSessionMap().
 		 
 		try {
-			if (SessionSpring.getAuthority().equals("cliente2"))
+			if (SessionSpring.getAuthority().equals("admin"))
 				FacesContext.getCurrentInstance().getExternalContext().redirect("../admin/home.xhtml");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -55,11 +55,11 @@ sessionMap = extCtx.getSessionMap();
 
 	}
 
-	public CuentaSuscripcionService getCuentaSuscripcionService() {
+	public CuentaService getCuentaSuscripcionService() {
 		return cuentaSuscripcionService;
 	}
 
-	public void setCuentaSuscripcionService(CuentaSuscripcionService cuentaSuscripcionService) {
+	public void setCuentaSuscripcionService(CuentaService cuentaSuscripcionService) {
 		this.cuentaSuscripcionService = cuentaSuscripcionService;
 	}
 
