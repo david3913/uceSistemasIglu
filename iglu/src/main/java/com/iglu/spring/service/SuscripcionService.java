@@ -2,9 +2,13 @@ package com.iglu.spring.service;
 
 import java.util.Calendar;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.iglu.security.PassEncode;
 import com.iglu.security.SessionSpring;
@@ -15,6 +19,8 @@ import com.iglu.spring.model.Cliente;
 import com.iglu.spring.model.Cuenta;
 import com.iglu.spring.model.Suscripcion;
 import com.iglu.spring.model.User;
+import com.iglu.util.Email;
+import com.iglu.util.config.ConfigApp;
 
 ///Logica del negocio
 
@@ -47,7 +53,7 @@ public class SuscripcionService {
 	
 
 	@Transactional(readOnly = false) 										
-	public void suscripcionPago(String username , int meses) {
+	public void suscripcionPago(String username , int meses, float total) {
 		Cliente cliente =getUserDAO().getUser(SessionSpring.getUsername()).getCliente();
 		Cuenta cuenta = cliente.getCuenta();
 		Suscripcion suscripcion = new Suscripcion();
@@ -63,6 +69,32 @@ public class SuscripcionService {
 		cuenta.setSuscripcion(suscripcion);
 
 		cuentaDAO.updateCuenta(cuenta);
+		
+		if (ConfigApp.isEmailEstado()) {
+			TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+
+				public void afterCommit() throws RuntimeException {
+
+					// TODO Auto-generated method stub
+					/// lanzar excepcion de email
+					try {
+						Email email = new Email(cliente.getEmail(), "Suscripcion añadida",
+								"Se descontara proximanete el valor de: " + total+" \n"+" Por motivo de la adquisicin de una suscripsion de "+meses+" meses");
+						email.sendMail();
+					} catch (MessagingException e) {
+			
+						throw new RuntimeException("Error al enviar email" + cliente.getEmail(), e.getCause());
+					}
+
+				}
+
+			});
+
+		}
+		
+		
+		
+		
 		
 	}
 	

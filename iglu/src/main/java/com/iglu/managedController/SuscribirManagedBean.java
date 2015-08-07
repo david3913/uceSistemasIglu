@@ -46,8 +46,8 @@ SuscripcionService suscripcionService;
 	public void suscribir(){
 		try{
 			//System.out.println(SessionSpring.getUsername());
-			getSuscripcionService().suscripcionPago(username,meses);
-	MensajesPF.infoMsj("Suscripcion  Adicionada");
+			getSuscripcionService().suscripcionPago(username,meses,total);
+	MensajesPF.infoMsj("Suscripcion  Adicionada_ SIga disfrutando de nuestra aplicacion");
 		}
 		catch(Exception ex){
 			MensajesPF.errorMsj("Error_No se ha podido completar la transaccion");
